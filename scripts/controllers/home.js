@@ -5,8 +5,16 @@ angular
       templateUrl: '/home.html'
     });
   }])
-  .controller('HomeCtrl', [function () {
+  .controller('HomeCtrl', ['$scope', function ($scope) {
 
+    var self = this;
 
+    self.register = function () {
+
+    };
+
+    self.login = function () {
+
+    };
 
   }]);
