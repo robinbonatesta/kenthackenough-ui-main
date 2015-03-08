@@ -1,5 +1,10 @@
 <div ng-controller="HomeCtrl as home">
 
+  <div ng-if="home.user">
+    <a href="/application">My Application</a><br>
+    <a ng-click="home.logout()">Logout</a>
+  </div>
+
   <div class="row">
 
     <div class="small-12 columns">

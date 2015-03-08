@@ -1,5 +1,5 @@
 angular
-  .module('khe', ['ngRoute'])
+  .module('khe', ['ngRoute', 'ngCookies'])
   .config(['$locationProvider', function ($locationProvider) {
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(true);
   }]);
