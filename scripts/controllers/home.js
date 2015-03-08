@@ -20,6 +20,8 @@ angular
       success(function (data) {
         self.errors = data.errors;
         if (!data.errors) {
+          self.email = '';
+          self.password = '';
           user.setMe(data);
           self.user = user.getMe();
           $location.path('/application');
@@ -39,6 +41,8 @@ angular
       success(function (data) {
         self.errors = data.errors;
         if (!data.errors) {
+          self.email = '';
+          self.password = '';
           user.setMe(data);
           self.user = user.getMe();
         }

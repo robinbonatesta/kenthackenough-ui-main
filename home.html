@@ -1,41 +1,57 @@
 <div ng-controller="HomeCtrl as home">
 
-  <div ng-if="home.user">
-    <a href="/application">My Application</a><br>
-    <a ng-click="home.logout()">Logout</a>
-  </div>
-
   <div class="row">
 
     <div class="small-12 columns">
 
-      <h1>Home</h1>
+      <!-- Buttons for logged in users -->
+      <div ng-if="home.user">
+        <a href="/application">My Application</a><br>
+        <a ng-click="home.logout()">Logout</a>
+      </div>
 
-      <h2>Register</h2>
-      <form ng-submit="home.register()">
-        <label>
-          Email
-          <input type="email" ng-model="home.email" placeholder="Email" required>
-        </label>
-        <label>
-          Password
-          <input type="password" ng-model="home.password" placeholder="Password" required>
-        </label>
-        <button>Register</button>
-      </form>
+      <!-- Errors -->
+      <div ng-if="home.errors">
+        <div data-alert class="alert-box alert">
+          <span ng-repeat="error in home.errors">
+            {{error}}<br>
+          </span>
+          <a href="#" class="close">&times;</a>
+        </div>
+      </div>
 
-      <h2>Login</h2>
-      <form ng-submit="home.login()">
-        <label>
-          Email
-          <input type="email" ng-model="home.email" placeholder="Email" required>
-        </label>
-        <label>
-          Password
-          <input type="password" ng-model="home.password" placeholder="Password" required>
-        </label>
-        <button>Login</button>
-      </form>
+      <!-- The login/register page -->
+      <div ng-if="!home.user">
+
+        <h1>Home</h1>
+
+        <h2>Register</h2>
+        <form ng-submit="home.register()">
+          <label>
+            Email
+            <input type="email" ng-model="home.email" placeholder="Email" required>
+          </label>
+          <label>
+            Password
+            <input type="password" ng-model="home.password" placeholder="Password" required>
+          </label>
+          <button>Register</button>
+        </form>
+
+        <h2>Login</h2>
+        <form ng-submit="home.login()">
+          <label>
+            Email
+            <input type="email" ng-model="home.email" placeholder="Email" required>
+          </label>
+          <label>
+            Password
+            <input type="password" ng-model="home.password" placeholder="Password" required>
+          </label>
+          <button>Login</button>
+        </form>
+
+      </div>
 
     </div>
 
