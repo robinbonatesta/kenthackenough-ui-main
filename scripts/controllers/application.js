@@ -3,7 +3,8 @@ angular
   .config(['$routeProvider', function ($router) {
     $router
       .when('/application', {
-        templateUrl: '/application.html'
+        templateUrl: '/application.html',
+        controller: 'ApplicationCtrl'
       });
   }])
   .controller('ApplicationCtrl', ['$location', '$filter', 'User', 'Application', function ($location, $filter, User, Application) {

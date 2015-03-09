@@ -2,7 +2,8 @@ angular
   .module('khe')
   .config(['$routeProvider', function ($router) {
     $router.when('/', {
-      templateUrl: '/home.html'
+      templateUrl: '/home.html',
+      controller: 'HomeCtrl'
     });
   }])
   .controller('HomeCtrl', ['User', '$location', function (User, $location) {
