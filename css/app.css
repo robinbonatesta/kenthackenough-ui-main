@@ -1,0 +1,72 @@
+.bold {
+  font-weight: bold;
+}
+
+.large {
+  font-size: 1.2rem;
+}
+
+.small {
+  font-size: .8rem;
+}
+
+.grey {
+  color: #4d4e51;
+}
+
+.black {
+  color: black;
+}
+
+a.black {
+  text-decoration: underline;
+  color: black;
+}
+
+a.black:hover {
+  color: #757575;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.validation input.ng-valid, .validation select.ng-valid {
+  background-color: #e6fdeb;
+}
+
+.validation input.ng-touched.ng-invalid, .validation select.ng-touched.ng-invalid {
+  background-color: #faede7;
+}
+
+fieldset legend {
+  background: none;
+}
+
+.switch {
+  height: 2rem;
+}
