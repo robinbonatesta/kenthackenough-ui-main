@@ -37,7 +37,6 @@ angular
         } else {
           this.selected.push(restriction);
         }
-        console.log(this.selected);
       }
     };
 
@@ -47,9 +46,11 @@ angular
     */
     application.get().
     success(function (data) {
-      if (!data.errors) {
-        angular.extend(self, data);
+      console.log(data);
+      if (data.application) {
+        angular.extend(self, data.application);
         // translate a few things to populate the form
+        console.log(self.dietary);
         self.name = self.name.split(' ');
         self.name.first = self.name[0];
         self.name.last = self.name[1];
@@ -57,10 +58,13 @@ angular
         self.travel = String(self.travel);
         self.diet.selected = self.dietary;
         self.phone = $filter('formatPhone')(self.phone);
+        self.submitted = true;
+      } else {
+        self.submitted = false;
       }
     }).
-    error(function () {
-      self.errors = ['An internal error occurred'];
+    error(function (data) {
+      self.errors = data.errors || ['An internal error occurred'];
     });
 
     /**
@@ -101,24 +105,19 @@ angular
       if (self.submitted) {
         application.update(app).
         success(function (data) {
-          self.errors = data.errors;
-          if (!data.errors) {
-            $location.path('/');
-          }
+          $location.path('/');
         }).
-        error(function () {
-          self.errors = ['An internal error occurred'];
+        error(function (data) {
+          self.errors = data.errors || ['An internal error occurred'];
         });
       } else {
         application.submit(app).
         success(function (data) {
-          self.errors = data.errors;
-          if (!data.errors) {
-            $location.path('/');
-          }
+          console.log(data);
+          $location.path('/');
         }).
         error(function (data) {
-          self.errors = ['An internal error occurred'];
+          self.errors = data.errors || ['An internal error occurred'];
         });
       }
     };

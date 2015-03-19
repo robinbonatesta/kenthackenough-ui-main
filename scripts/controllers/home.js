@@ -19,17 +19,16 @@ angular
         password: self.password
       }).
       success(function (data) {
-        self.errors = data.errors;
-        if (!data.errors) {
-          self.email = '';
-          self.password = '';
-          user.setMe(data);
-          self.user = user.getMe();
-          $location.path('/application');
-        }
+        self.email = '';
+        self.password = '';
+        user.setMe(data);
+        self.user = user.getMe();
+        $location.path('/application');
       }).
-      error(function () {
-        self.errors = ['An internal error has occurred'];
+      error(function (data) {
+        if (data) {
+          self.errors = data.errors || ['An internal error has occurred'];
+        }
       });
     };
 
@@ -40,16 +39,13 @@ angular
         password: self.password
       }).
       success(function (data) {
-        self.errors = data.errors;
-        if (!data.errors) {
-          self.email = '';
-          self.password = '';
-          user.setMe(data);
-          self.user = user.getMe();
-        }
+        self.email = '';
+        self.password = '';
+        user.setMe(data);
+        self.user = user.getMe();
       }).
-      error(function () {
-        self.errors = ['An internal error has occurred'];
+      error(function (data) {
+        self.errors = data.errors || ['An internal error has occurred'];
       });
     };
 
