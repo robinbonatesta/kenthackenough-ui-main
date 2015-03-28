@@ -1,3 +1,7 @@
+body{
+  background-color:black;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -69,4 +73,17 @@ fieldset legend {
 
 .switch {
   height: 2rem;
+}
+
+.container{
+  text-align:center;
+  position:fixed;
+  margin:-20px -40px;
+  top:0;
+  left:0;
+  height:100%;
+}
+
+#layer1, #layer2{
+  height:110vh;
 }

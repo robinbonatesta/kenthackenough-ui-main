@@ -1,60 +1,66 @@
-<div ng-controller="HomeCtrl as home">
-
-  <div class="row">
-
-    <div class="small-12 columns">
-
-      <!-- Buttons for logged in users -->
-      <div ng-if="home.user">
-        <a href="/application">My Application</a><br>
-        <a ng-click="home.logout()">Logout</a>
-      </div>
-
-      <!-- Errors -->
-      <div ng-if="home.errors">
-        <div data-alert class="alert-box alert">
-          <span ng-repeat="error in home.errors">
-            {{error}}<br>
-          </span>
-          <a href="#" class="close">&times;</a>
+<!-- Parallax Background -->
+<div id="container" class="container">
+  <ul id="scene" class="scene">
+    <li class="layer" data-depth="0.70"><img id="layer2" src="img/layer2.png"></li>
+    <li class="layer" data-depth="0.40"><img id="layer1" src="img/layer1.png"></li>
+    <li class="layer" data-depth="0.10">
+      <div class="row" id="icons">
+        <div class="small-12 columns align-center">
+          <li><img src="img/clover.svg"></li>
+          <li><img src="img/diamond.svg"></li>
+          <li><img src="img/spade.svg"></li>
+          <li><img src="img/heart.svg"></li>
         </div>
       </div>
+    </li>
+  </ul>
 
-      <!-- The login/register page -->
-      <div ng-if="!home.user">
-
-        <h1>Home</h1>
-
-        <h2>Register</h2>
-        <form ng-submit="home.register()">
-          <label>
-            Email
-            <input type="email" ng-model="home.email" placeholder="Email" required>
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.password" placeholder="Password" required>
-          </label>
-          <button>Register</button>
-        </form>
-
-        <h2>Login</h2>
-        <form ng-submit="home.login()">
-          <label>
-            Email
-            <input type="email" ng-model="home.email" placeholder="Email" required>
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.password" placeholder="Password" required>
-          </label>
-          <button>Login</button>
-        </form>
-
+  <div class="wrap">
+    <div class="row" id="icons">
+      <div class="small-12 columns align-center">
+        <li><img src="img/clover_white.svg"></li>
+        <li><img src="img/diamond.svg"></li>
+        <li><img src="img/spade_white.svg"></li>
+        <li><img src="img/heart.svg"></li>
       </div>
-
     </div>
 
-  </div>
+    <div class="row" id="header">
+      <div class="small-12 columns align-center">
+        <h1>KENT HACK ENOUGH</h1>
+      </div>
+    </div>
+
+    <div class="row" id="date">
+      <div class="small-12 columns align-center">
+        <h3>October 9 - 11, 2015 <span class="horizontal-spacer">|</span> <a href="mailto:staff@khe.io">staff@khe.io</a></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <br><br>
+      <div class="small-4 small-offset-4 columns">
+        <p class="align-center">Get updates about KHE:</p>
+        <p id="thanks" class="align-center">Thanks, you'll be hearing from us soon!</p>
+        <p id="error" class="align-center">That email is already in use.</p>
+        <form>
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <input type="text" placeholder="Email" id="email">
+            </div>
+            <div class="small-2 columns">
+              <button href="#" class="button postfix">Go</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
 </div>
+
+<script>
+  $('#scene').parallax({
+    limitX: 20,
+    limitY: 20,
+  });
+</script>
