@@ -1,3 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Oswald);
+
+body {
+  background-color: black;
+}
+
+*, h4, h5, h6, p {
+  font-family: 'Droid Serif', sans-serif;
+  color: black;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: black;
+}
+
+a {
+  color: red;
+}
+
+a:hover {
+  color: #E70000;
+}
+
+button, .button {
+  background-color: red;
+}
+
+button:hover, .button:hover {
+  background-color: #E70000;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -69,4 +101,42 @@ fieldset legend {
 
 .switch {
   height: 2rem;
+}
+
+.container {
+  text-align: center;
+  position: fixed;
+  margin: -20px -40px;
+  top: 0;
+  left: 0;
+  vertical-align: middle;
+}
+
+#layer2, #layer1 {
+  height: 110vh;
+  width: 110vw;
+}
+
+.content {
+  width: 100vw;
+  margin-left: 20px;
+  margin-top: 30vh;
+}
+
+#icons {
+  height: 5.5rem;
+  margin-bottom: 10px;
+}
+
+#date h2 {
+  font-size: 2.1rem;
+}
+
+#contact h4 {
+  margin-top: -10px;
+  font-size: 1.47rem;
+}
+
+#updates form {
+  margin-top: -10px;
 }

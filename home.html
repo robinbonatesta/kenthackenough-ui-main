@@ -1,60 +1,62 @@
-<div ng-controller="HomeCtrl as home">
+<!-- Parallax Background -->
+<div id="container" class="container">
+  <ul id="scene" class="scene">
+    <li class="layer" data-depth="1.00"><img id="layer2" src="img/layer2.png"></li>
+    <li class="layer" data-depth="0.75"><img id="layer1" src="img/layer1.png"></li>
+    <li class="layer" data-depth="0.25">
+      <div class="content">
 
-  <div class="row">
-
-    <div class="small-12 columns">
-
-      <!-- Buttons for logged in users -->
-      <div ng-if="home.user">
-        <a href="/application">My Application</a><br>
-        <a ng-click="home.logout()">Logout</a>
-      </div>
-
-      <!-- Errors -->
-      <div ng-if="home.errors">
-        <div data-alert class="alert-box alert">
-          <span ng-repeat="error in home.errors">
-            {{error}}<br>
-          </span>
-          <a href="#" class="close">&times;</a>
+        <div class="row">
+          <div class="small-12 columns align-center">
+            <img id="icons" src="img/icons.svg">
+          </div>
         </div>
+
+        <div class="row">
+          <div class="small-12 columns align-center">
+            <img src="img/logo.png">
+          </div>
+        </div>
+
+        <div class="row" id="date">
+          <div class="small-12 columns align-center">
+            <h2>OCTOBER 9 - 11, 2015 <span class="horizontal-spacer">|</span> KENT STATE UNIVERSITY</h2>
+          </div>
+        </div>
+
+        <div class="row" id="contact">
+          <div class="small-12 columns align-center">
+            <h4> <a href="docs/SponsorshipPacket.pdf">Insterested in sponsoring?</a> Contact us at: <a href="mailto:staff@khe.io">staff@khe.io</a><h4>
+          </div>
+        </div>
+
+        <div class="row" id="updates">
+          <br>
+          <div class="small-4 small-offset-4 columns">
+            <p class="align-center">Get updates about KHE:</p>
+            <p ng-if="home.success" class="align-center">Thanks, you'll be hearing from us soon!</p>
+            <p ng-if="home.error" class="align-center">That email is already in use.</p>
+            <form ng-if="!home.success" ng-submit="home.mail()">
+              <div class="row collapse">
+                <div class="small-10 columns">
+                  <input type="text" placeholder="Email" ng-model="home.email">
+                </div>
+                <div class="small-2 columns">
+                  <button href="#" class="button postfix">Go</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
       </div>
+    </li>
+  </ul>
 
-      <!-- The login/register page -->
-      <div ng-if="!home.user">
+<script>
+  $('#scene').parallax({
+    limitX: 20,
+    limitY: 20,
+  });
+</script>
 
-        <h1>Home</h1>
-
-        <h2>Register</h2>
-        <form ng-submit="home.register()">
-          <label>
-            Email
-            <input type="email" ng-model="home.email" placeholder="Email" required>
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.password" placeholder="Password" required>
-          </label>
-          <button>Register</button>
-        </form>
-
-        <h2>Login</h2>
-        <form ng-submit="home.login()">
-          <label>
-            Email
-            <input type="email" ng-model="home.email" placeholder="Email" required>
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.password" placeholder="Password" required>
-          </label>
-          <button>Login</button>
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
