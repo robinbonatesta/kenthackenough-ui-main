@@ -1,56 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="khe">
 <head>
+
   <title>Kent Hack Enough</title>
 
   <!-- Behavioral Meta Data -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <!-- Config -->
-  <script src="/config/config.js"></script>
-
-  <!-- Vendor -->
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/bower_components/moment/min/moment.min.js"></script>
-  <script src="/bower_components/underscore/underscore-min.js"></script>
-  <script src="/bower_components/angular/angular.min.js"></script>
-  <script src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
-  <script src="/bower_components/angular-route/angular-route.min.js"></script>
-  <script src="/bower_components/modernizr/modernizr.js"></script>
-  <script src="/bower_components/parallax/deploy/jquery.parallax.min.js"></script>
-
-  <script src="/scripts/app.js"></script>
-
-  <!-- Controllers -->
-  <script src="/scripts/controllers/application.js"></script>
-  <script src="/scripts/controllers/home.js"></script>
-
-  <!-- Filters -->
-  <script src="/scripts/filters/base64Encode.js"></script>
-  <script src="/scripts/filters/capitalizeFirstLetter.js"></script>
-  <script src="/scripts/filters/formatPhone.js"></script>
-  <script src="/scripts/filters/relativeDate.js"></script>
-  <script src="/scripts/filters/unsafe.js"></script>
-
-  <!-- Services -->
-  <script src="/scripts/services/user.js"></script>
-  <script src="/scripts/services/news.js"></script>
-  <script src="/scripts/services/application.js"></script>
+  <!-- Scripts -->
+  <script src="/dist/scripts/bower.min.js"></script>
+  <script src="/dist/scripts/scripts.min.js"></script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css">
-  <link rel="stylesheet" href="/bower_components/foundation/css/foundation.css">
-  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/dist/styles/bower.min.css">
+  <link rel="stylesheet" href="/dist/styles/styles.min.css">
 
   <base href="/">
+
 </head>
 <body>
 
   <div ng-view></div>
 
-  <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- UI Scripts -->
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
   <script>
     $(document).foundation();
