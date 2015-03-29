@@ -81,9 +81,16 @@ fieldset legend {
   margin:-20px -40px;
   top:0;
   left:0;
+  vertical-align:middle;
 }
 
-img{
+#layer2, #layer1{
   height:110vh;
   width:110vw;
+}
+
+.content{
+  width:100vw;
+  margin-left:20px;
+  margin-top: 40vh;
 }
