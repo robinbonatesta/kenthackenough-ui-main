@@ -2,8 +2,10 @@
 <div id="container" class="container">
   <ul id="scene" class="scene">
     <li class="layer" data-depth="1.00"><img id="layer2" src="img/layer2.png"></li>
-    <li class="layer" data-depth="0.75"><img id="layer1" src="img/layer1.png"></li>
-    <li class="layer" data-depth="0.25">
+    <li class="layer" data-depth="1.00"><img id="layer2" src="img/layer2.png"></li>
+    <li class="layer" data-depth="0.50"><img id="layer1" src="img/layer1.png"></li>
+    <li class="layer" data-depth="0.50"><img id="layer1" src="img/layer1.png"></li>
+    <li class="layer" data-depth="0.10">
       <div class="content">
 
         <div class="row">
@@ -26,7 +28,7 @@
 
         <div class="row" id="contact">
           <div class="small-12 columns align-center">
-            <h4> <a href="docs/SponsorshipPacket.pdf">Insterested in sponsoring?</a> Contact us at: <a href="mailto:staff@khe.io">staff@khe.io</a><h4>
+            <h4> <a target="_blank" href="/SponsorshipPacket.pdf">Interested in sponsoring?</a> Contact us at: <a href="mailto:staff@khe.io">staff@khe.io</a><h4>
           </div>
         </div>
 
@@ -34,12 +36,12 @@
           <br>
           <div class="small-4 small-offset-4 columns">
             <p class="align-center">Get updates about KHE:</p>
-            <p id="thanks" class="align-center">Thanks, you'll be hearing from us soon!</p>
-            <p id="error" class="align-center">That email is already in use.</p>
-            <form>
+            <p ng-if="home.success" class="align-center">Thanks, you'll be hearing from us soon!</p>
+            <p ng-if="home.error" class="align-center">That email is already in use.</p>
+            <form ng-if="!home.success" ng-submit="home.mail()">
               <div class="row collapse">
                 <div class="small-10 columns">
-                  <input type="text" placeholder="Email" id="email">
+                  <input type="text" placeholder="Email" ng-model="home.email">
                 </div>
                 <div class="small-2 columns">
                   <button href="#" class="button postfix">Go</button>
@@ -60,30 +62,3 @@
   });
 </script>
 
-<script>
-  var $form = $('form');
-  var $email = $('#email');
-  var $thanks = $('#thanks');
-  var $error = $('#error');
-  $thanks.hide();
-  $error.hide();
-  $form.submit(function (e) {
-    e.preventDefault();
-    $.post('http://api.khe.io/news', {
-      email: $email.val()
-    }).
-    done(function (data) {
-      $thanks.show();
-      $error.hide();
-      $form.hide();
-    }).
-    fail(function (data) {
-      $thanks.hide();
-      $error.show();
-      $form.show();
-    }).
-    always(function () {
-      $email.val('');
-    });
-  });
-  </script>

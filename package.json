@@ -1,0 +1,30 @@
+{
+  "name": "kenthackenough-ui-main",
+  "version": "1.0.0",
+  "description": "This is what the attendees see when they go to the KHE website.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "3.8.x",
+    "gulp-concat": "2.5.x",
+    "gulp-jshint": "1.9.x",
+    "gulp-minify-css": "1.0.x",
+    "gulp-plumber": "1.0.x",
+    "gulp-uglify": "1.1.x",
+    "jshint-stylish": "1.0.x",
+    "underscore": "1.8.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hacksu/kenthackenough-ui-main.git"
+  },
+  "author": "Paul Dilyard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hacksu/kenthackenough-ui-main/issues"
+  },
+  "homepage": "https://github.com/hacksu/kenthackenough-ui-main"
+}

@@ -74,11 +74,11 @@ angular
       // make a string of dietary restrictions
       var restrictions = null;
       if (self.diet.selected.length) {
-        var restrictions = '';
+        restrictions = '';
         for (var i = 0; i < self.diet.selected.length; ++i) {
-          restrictions += self.diet.selected[i] + '|'
+          restrictions += self.diet.selected[i] + '|';
         }
-        var restrictions = restrictions.substr(0, restrictions.length - 1);
+        restrictions = restrictions.substr(0, restrictions.length - 1);
       }
 
       // build the application object

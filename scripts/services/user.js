@@ -65,7 +65,7 @@ angular
         };
         angular.extend(req, ext);
         return req;
-      }
+      };
 
       /**
       * Register a user
