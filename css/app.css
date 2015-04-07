@@ -12,6 +12,16 @@ body {
     src: url(/fonts/droidserif.ttf);
 }
 
+@font-face{
+    font-family: Oswald;
+    src: url(/fonts/oswald.ttf);
+}
+
+@font-face{
+    font-family: DroidSerif;
+    src: url(/fonts/droidserif.ttf);
+}
+
 *, h4, h5, h6, p {
   font-family: DroidSerif, sans-serif;
   color: black;
