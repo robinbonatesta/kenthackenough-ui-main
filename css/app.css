@@ -2,13 +2,23 @@ body {
   background-color: black;
 }
 
+@font-face{
+    font-family: Oswald;
+    src: url(/fonts/oswald.ttf);
+}
+
+@font-face{
+    font-family: DroidSerif;
+    src: url(/fonts/droidserif.ttf);
+}
+
 *, h4, h5, h6, p {
-  font-family: 'Droid Serif', sans-serif;
+  font-family: DroidSerif, sans-serif;
   color: black;
 }
 
 h1, h2, h3 {
-  font-family: 'Oswald', sans-serif;
+  font-family: Oswald, sans-serif;
   color: black;
 }
 
