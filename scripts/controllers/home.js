@@ -4,6 +4,9 @@ angular
     $router.when('/', {
       templateUrl: '/home.html',
       controller: 'HomeCtrl as home'
+    }).when('/login', {
+      templateUrl: '/login.html',
+      controller: 'HomeCtrl as home'
     });
   }])
   .controller('HomeCtrl', ['User', 'News', '$location', function (User, News, $location) {

@@ -12,12 +12,7 @@
 var scripts = [
 
   './config/config.js',
-
-  './scripts/*',
-  './scripts/controllers/*',
-  './scripts/directives/*',
-  './scripts/filters/*',
-  './scripts/services/*'
+  './scripts/**/*.js'
 
 ];
 
