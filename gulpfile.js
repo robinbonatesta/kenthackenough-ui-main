@@ -40,8 +40,7 @@ var bowerJs = [
   './bower_components/angular-socket-io/socket.min.js',
   './bower_components/angular-cookies/angular-cookies.min.js',
   './bower_components/moment/min/moment.min.js',
-  './bower_components/marked/marked.min.js',
-  './bower_components/parallax/deploy/jquery.parallax.min.js'
+  './bower_components/marked/marked.min.js'
 
 ];
 
