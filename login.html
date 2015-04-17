@@ -1,3 +1,7 @@
+<div ng-repeat="error in home.errors">
+  <p>{{error}}</p>
+</div>
+
 <form ng-submit="home.login()">
   <input type="email" ng-model="home.email" placeholder="Email">
   <input type="password" ng-model="home.password" placeholder="Password">
