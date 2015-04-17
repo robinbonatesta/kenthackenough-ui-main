@@ -1,0 +1,38 @@
+#application {
+  background: black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#application p {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+}
+
+#application input {
+  border: 0;
+  border-bottom: 2px solid red;
+  background: none;
+  box-shadow: none;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  height: 4rem;
+  padding: 0;
+  margin: 0;
+  padding-top: 0.9rem;
+  text-align: center;
+}
+
+#application input::selection {
+  background-color: red;
+  color: red;
+}
+
+#application .section {
+  position: absolute;
+  width: 100%;
+  top: 100vh;
+}
