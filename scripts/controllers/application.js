@@ -3,8 +3,12 @@ angular
   .config(['$routeProvider', function ($router) {
     $router
       .when('/application', {
-        templateUrl: '/application.html',
-        controller: 'ApplicationCtrl'
+        templateUrl: '/apply.html',
+        controller: 'ApplicationCtrl as application'
+      })
+      .when('/apply', {
+        templateUrl: '/apply.html',
+        controller: 'ApplicationCtrl as application'
       });
   }])
   .controller('ApplicationCtrl', ['$location', '$filter', 'User', 'Application', function ($location, $filter, User, Application) {
@@ -46,17 +50,11 @@ angular
     */
     application.get().
     success(function (data) {
-      console.log(data);
       if (data.application) {
         angular.extend(self, data.application);
-        // translate a few things to populate the form
-        console.log(self.dietary);
-        self.name = self.name.split(' ');
-        self.name.first = self.name[0];
-        self.name.last = self.name[1];
         self.first = String(self.first);
         self.travel = String(self.travel);
-        self.diet.selected = self.dietary;
+        if (self.dietary) self.diet.selected = self.dietary;
         self.phone = $filter('formatPhone')(self.phone);
         self.submitted = true;
       } else {
@@ -83,7 +81,7 @@ angular
 
       // build the application object
       var app = {
-        name: self.name.first + ' ' + self.name.last,
+        name: self.name,
         school: self.school,
         phone: self.phone.replace(/\D/g,''),
         shirt: self.shirt,
