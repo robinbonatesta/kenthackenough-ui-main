@@ -6,20 +6,20 @@
 }
 
 #application p {
-  font-size: 3rem;
+  font-size: 6vw;
   color: white;
   text-align: center;
 }
 
 #application input {
   border: 0;
-  border-bottom: 2px solid red;
+  border-bottom: 3px solid red;
   background: none;
   box-shadow: none;
-  font-size: 3rem;
+  font-size: 6vw;
   color: white;
   font-weight: bold;
-  height: 4rem;
+  height: 12vw;
   padding: 0;
   margin: 0;
   padding-top: 0.9rem;
@@ -35,4 +35,27 @@
   position: absolute;
   width: 100%;
   top: 100vh;
+}
+
+#application .advance {
+  margin-top: 10px;
+}
+
+#application button {
+  font-family: 'Droid Serif', serif;
+}
+
+#play {
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  margin-top: 10vh;
+  background-color: #6D6D6D;
+  z-index: 100;
+  border: 2px solid red;
+}
+
+#ball-cup {
+  width: 1000px;
+  height: 800px;
 }

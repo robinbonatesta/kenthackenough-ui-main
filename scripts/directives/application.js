@@ -15,7 +15,7 @@ angular
           $.fn.extend({
             slideUpIn: function (callback) {
               this.fadeIn(50).animate({
-                'top': '30vh'
+                'top': '20vh'
               }, 200, callback);
               return this;
             },
@@ -27,7 +27,7 @@ angular
             },
             slideDownIn: function (callback) {
               this.fadeIn(50).animate({
-                'top': '30vh'
+                'top': '20vh'
               }, 200, callback);
               return this;
             },
@@ -61,6 +61,15 @@ angular
                 }
               });
 
+              // listen for next and previous buttons
+              $('button.btn-prev').click(function () {
+                self.prev();
+              });
+
+              $('button.btn-next').click(function () {
+                self.next();
+              });
+
               // listen for enter and shift+enter
               this.steps.forEach(function (step) {
                 step.hide();
@@ -79,7 +88,7 @@ angular
 
               // show the first item
               this.steps[0].slideUpIn(function () {
-                $(this).children('input, label, select, button').focus();
+                $(this).children('input:first, label:first, select:first, button:first').focus();
               });
             },
 
@@ -88,37 +97,65 @@ angular
                 this.steps[this.current].slideUpOut();
                 this.current++;
                 this.steps[this.current].slideUpIn(function () {
-                  $(this).children('input, label, select, button').focus();
+                  $(this).children('input:first, label:first, select:first, button:first').focus();
                 });
               }
             },
 
             prev: function () {
-              if (this.current != 0) {
+              if (this.current !== 0) {
                 this.steps[this.current].slideDownOut();
                 this.current--;
                 this.steps[this.current].slideDownIn(function () {
-                  $(this).children('input, label, select, button').focus();
+                  $(this).children('input:first, label:first, select:first, button:first').focus();
                 });
               }
             }
           };
 
-          steps.addStep($('#application #name'));
-          steps.addStep($('#application #phone'));
-          steps.addStep($('#application #school'));
-          steps.addStep($('#application #shirt'));
-          steps.addStep($('#application #dietary'));
-          steps.addStep($('#application #age'));
-          steps.addStep($('#application #gender'));
-          steps.addStep($('#application #class'));
-          steps.addStep($('#application #first'));
-          steps.addStep($('#application #major'));
-          steps.addStep($('#application #travel'));
-          steps.addStep($('#application #agreements'));
-          steps.addStep($('#application #submit'));
-
+          // Add all the steps
+          $('#application .section').each(function (element) {
+            steps.addStep($(this));
+          });
           steps.start();
+
+          /**
+          * ********************************************************************
+          */
+
+          var s = new Snap('#ball-cup');
+
+          Snap.load('/img/pong_ball.svg', function (ball) {
+            Snap.load('/img/solo_cup.svg', function (cup) {
+
+              // Add the elements to the page
+              ball = ball.select('g');
+              cup = cup.select('g');
+              s.append(ball);
+              s.append(cup);
+
+              cup.transform('s0.5, t1200,100');
+              ball.transform('s0.5, t0, 100');
+
+              var path = s.path("M70,200 C400,-600 1750,400 1300,300");
+              path.attr({ fill: "none", stroke: "black", opacity: "1" });
+
+              animateGroupAlongPath(path, ball, 0, 1000);
+
+            });
+          });
+
+          var animateGroupAlongPath = function (path, element, start, dur, callback) {
+            var len = Snap.path.getTotalLength(path);
+
+            Snap.animate(start, len, function (value) {
+              var movePoint = Snap.path.getPointAtLength(path, value);
+
+              element.transform('s0.5 t' + movePoint.x + ', ' + movePoint.y);
+            }, dur, mina.easeinout, function () {
+              callback && callback(path);
+            });
+          };
 
         });
       }

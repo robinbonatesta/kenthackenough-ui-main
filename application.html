@@ -1,28 +1,72 @@
 <div id="application">
   <div class="row">
     <div class="small-12 columns">
-      <form ng-submit="application.submit()" novalidate class="validation">
+      <form ng-submit="application.submit()" class="validation">
+
+        <div id="play">
+
+          <div id="progress">
+            <div class="step">
+
+
+
+              <svg id="ball-cup"></svg>
+
+
+            </div>
+          </div>
+
+        </div>
 
         <!-- Name -->
-        <div class="row section" id="name">
+        <div class="row section">
           <p>What is your name?</p>
           <input type="text" ng-model="application.name" placeholder="John Doe" required>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Phone -->
-        <div class="row section" id="phone">
+        <div class="row section">
           <p>What is your phone number?</p>
           <input type="text" ng-model="application.phone" placeholder="555-555-5555" required>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- School -->
-        <div class="row section" id="school">
+        <div class="row section">
           <p>What school do you go to?</p>
           <input type="text" ng-model="application.school" placeholder="State University" required>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- T-shirt size -->
-        <div class="row section" id="shirt">
+        <div class="row section">
           <p>What is your t-shirt size?</p>
           <select ng-model="application.shirt" required>
             <option value="S">Small</option>
@@ -30,10 +74,20 @@
             <option value="L">Large</option>
             <option value="XL">X-Large</option>
           </select>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Dietary restrictions -->
-        <div class="row section" id="dietary">
+        <div class="row section">
           <p>Select any dietary restrictions you have:</p>
           <label ng-repeat="restriction in application.diet.possible" class="small-12 columns">
             <input
@@ -44,26 +98,56 @@
               ng-click="application.diet.toggleSelection(restriction)"
             > {{restriction}}
           </label>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Age -->
-        <div class="row section" id="age">
+        <div class="row section">
           <p>How old are you?</p>
           <input type="text" ng-model="application.age" required>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Gender -->
-        <div class="row section" id="gender">
+        <div class="row section">
           <p>Gender:</p>
           <select ng-model="application.gender" required>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Class -->
-        <div class="row section" id="class">
+        <div class="row section">
           <p>What is your year in school?</p>
           <select ng-model="application.year" required>
             <option value="Senior">Senior</option>
@@ -72,34 +156,74 @@
             <option value="Freshman">Freshman</option>
             <option value="High School">High School</option>
           </select>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- First hackathon -->
-        <div class="row section" id="first">
+        <div class="row section">
           <p>Is this your first hackathon?</p>
           <select ng-model="application.first">
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Major -->
-        <div class="row section" id="major">
+        <div class="row section">
           <p>What is your major?</p>
           <input type="text" ng-model="application.major" required>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Travel -->
-        <div class="row section" id="travel">
+        <div class="row section">
           <p>Will you require travel reimbursement?</p>
           <select ng-model="application.travel" required>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Agreements -->
-        <div class="row section" id="agreements">
+        <div class="row section">
           <label>
             <input type="checkbox" ng-model="application.demographic" value="true" required>
             I agree to allow my demographic information to be used anonymously to improve hackathons.
@@ -115,11 +239,30 @@
             I agree to this event waiver.
             <br>
           </label>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+              <button type="button" class="button btn-next">Next [enter]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Submission button -->
-        <div class="row section" id="submit">
+        <div class="row section">
           <button>Submit</button>
+
+          <!-- Navigation buttons -->
+          <div class="row advance">
+            <div class="small-5 columns">
+              <button type="button" class="button secondary btn-prev">Previous [shift+enter]</button>
+            </div>
+            <div class="small-5 small-offset-2 columns align-right">
+            </div>
+          </div>
         </div>
 
       </form>
