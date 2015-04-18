@@ -90,6 +90,8 @@ angular
               this.steps[0].slideUpIn(function () {
                 $(this).children('input:first, label:first, select:first, button:first').focus();
               });
+
+              var meter = new Meter(10);
             },
 
             next: function () {
@@ -123,36 +125,47 @@ angular
           * ********************************************************************
           */
 
-          var s = new Snap('#ball-cup');
+          function Meter(count) {
 
-          Snap.load('/img/pong_ball.svg', function (ball) {
-            Snap.load('/img/solo_cup.svg', function (cup) {
+            var self = this;
 
-              // Add the elements to the page
-              ball = ball.select('g');
-              cup = cup.select('g');
-              s.append(ball);
-              s.append(cup);
+            self.meters = [];
 
-              cup.transform('s0.5, t1200,100');
-              ball.transform('s0.5, t0, 100');
+            for (var i = 0; i < count; ++i) {
+              $('footer').append('<svg id="meter-'+i+'"></svg>');
+              self.meters.push(new Snap('#meter-'+i));
+            }
 
-              var path = s.path("M70,200 C400,-600 1750,400 1300,300");
-              path.attr({ fill: "none", stroke: "black", opacity: "1" });
+            Snap.load('/img/pong_ball.svg', function (ball) {
+              Snap.load('/img/solo_cup.svg', function (cup) {
 
-              animateGroupAlongPath(path, ball, 0, 1000);
+                ball = ball.select('g');
+                cup = cup.select('g');
+                self.meters.forEach(function (meter) {
+                  meter.append(ball);
+                  meter.append(cup);
 
+                  cup.transform('s0.2, t770,-270');
+                  ball.transform('s0.2, t-100, 100');
+
+                  var path = meter.path("M70,200 C500,-600 1300,400 1150,400");
+                  path.attr({ fill: "none", stroke: "none", opacity: "1" });
+
+                  self.animateGroupAlongPath(path, ball, 0, 500);
+                });
+
+              });
             });
-          });
 
-          var animateGroupAlongPath = function (path, element, start, dur, callback) {
+          }
+
+          Meter.prototype.animateGroupAlongPath = function (path, element, start, dur, callback) {
             var len = Snap.path.getTotalLength(path);
-
             Snap.animate(start, len, function (value) {
               var movePoint = Snap.path.getPointAtLength(path, value);
 
-              element.transform('s0.5 t' + movePoint.x + ', ' + movePoint.y);
-            }, dur, mina.easeinout, function () {
+              element.transform('s0.2 t' + movePoint.x + ', ' + movePoint.y);
+            }, dur, function () {
               callback && callback(path);
             });
           };

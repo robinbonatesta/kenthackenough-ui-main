@@ -45,17 +45,17 @@
   font-family: 'Droid Serif', serif;
 }
 
-#play {
-  position: absolute;
-  width: 80vw;
-  height: 80vh;
-  margin-top: 10vh;
-  background-color: #6D6D6D;
-  z-index: 100;
-  border: 2px solid red;
+#ball-cup {
+  width: 360px;
+  height: 200px;
+  margin: auto;
 }
 
-#ball-cup {
-  width: 1000px;
-  height: 800px;
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  background-color: gray;
 }
