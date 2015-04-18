@@ -21,7 +21,8 @@
     "modernizr": "2.8.x",
     "moment": "2.9.x",
     "underscore": "1.8.x",
-    "socket.io-client": "1.3.x"
+    "socket.io-client": "1.3.x",
+    "snap.svg": "0.4.x"
   },
   "resolutions": {
     "angular": "1.3.x"
