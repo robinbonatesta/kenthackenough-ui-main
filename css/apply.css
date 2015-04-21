@@ -6,56 +6,79 @@
 }
 
 #application p {
-  font-size: 6vw;
+  font-size: 2rem;
   color: white;
   text-align: center;
 }
 
 #application input {
   border: 0;
-  border-bottom: 3px solid red;
+  border-bottom: 2px solid red;
   background: none;
   box-shadow: none;
-  font-size: 6vw;
+  font-size: 2rem;
   color: white;
   font-weight: bold;
-  height: 12vw;
-  padding: 0;
-  margin: 0;
-  padding-top: 0.9rem;
+  height: 3rem;
+  width: 100%;
   text-align: center;
 }
 
 #application input::selection {
-  background-color: red;
-  color: red;
+  background-color: #D3D3D3;
+  color: #D3D3D3;
+}
+
+#application input, input:focus, textarea, textarea:focus, select, select:focus, a {
+  outline: none;
 }
 
 #application .section {
   position: absolute;
   width: 100%;
   top: 100vh;
+  padding: .5em;
 }
 
 #application .advance {
-  margin-top: 10px;
+  position: relative;
+  top: 10px;
 }
 
 #application button {
   font-family: 'Droid Serif', serif;
+  font-size: 0.8rem;
 }
 
-#ball-cup {
-  width: 360px;
-  height: 200px;
-  margin: auto;
+#application button.btn-prev {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+#application select {
+  background: none;
   color: white;
-  background-color: gray;
+  border: 1px solid red;
+}
+
+#application label {
+  border: 1px solid red;
+  margin-bottom: -1px;
+}
+
+#application label span {
+  color: white;
+  float: left;
+  margin-top: 14px;
+}
+
+#application label input {
+  color: white;
+  width: 2rem;
+  float: left;
+  margin-bottom: -2px;
+}
+
+#application input[type="checkbox"] {
+  background-color: red;
 }
