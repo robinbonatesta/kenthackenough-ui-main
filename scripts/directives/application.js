@@ -87,7 +87,7 @@ angular
               });
 
               // show the first item
-              this.steps[4].slideUpIn(function () {
+              this.steps[0].slideUpIn(function () {
                 $(this).children('input:first, label:first, select:first, button:first').focus();
               });
             },

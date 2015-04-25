@@ -74,7 +74,7 @@
         <!-- Dietary restrictions -->
         <div class="row section">
           <p>Select any dietary restrictions you have:</p>
-          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns">
+          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns dietary-item cursor-pointer">
             <input
               type="checkbox"
               name="selectedRestrictions[]"
@@ -87,9 +87,11 @@
           <!-- Navigation buttons -->
           <div class="row advance">
             <div class="small-5 columns">
+              <br>
               <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
             </div>
             <div class="small-5 small-offset-2 columns align-right">
+              <br>
               <button type="button" class="button btn-next">Next [enter]</button>
             </div>
           </div>
@@ -209,28 +211,29 @@
 
         <!-- Agreements -->
         <div class="row section">
-          <label>
+
+          <label class="small-12 columns">
             <input type="checkbox" ng-model="application.demographic" value="true" required>
-            I agree to allow my demographic information to be used anonymously to improve hackathons.
-            <br>
+            <span>I agree to allow my demographic information to be used anonymously to improve hackathons.</span>
           </label>
-          <label>
+          <label class="small-12 columns">
             <input type="checkbox" ng-model="application.conduct" value="true" required>
-            I agree to the MLH Code of Conduct
-            <br>
+            <span>I agree to the MLH Code of Conduct</span>
           </label>
-          <label>
+          <label class="small-12 columns">
             <input type="checkbox" ng-model="application.waiver" value="true" required>
-            I agree to this event waiver.
+            <span>I agree to this event waiver.</span>
             <br>
           </label>
 
           <!-- Navigation buttons -->
           <div class="row advance">
             <div class="small-5 columns">
+              <br>
               <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
             </div>
             <div class="small-5 small-offset-2 columns align-right">
+              <br>
               <button type="button" class="button btn-next">Next [enter]</button>
             </div>
           </div>
@@ -238,14 +241,12 @@
 
         <!-- Submission button -->
         <div class="row section">
-          <button>Submit</button>
+          <button class="small-12 columns">Submit</button>
 
           <!-- Navigation buttons -->
           <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
+            <div class="small-12 columns">
+              <button type="button" class="button secondary btn-prev small-4 small-offset-4 columns"><br>Back [shift+enter]<br><br></button>
             </div>
           </div>
         </div>

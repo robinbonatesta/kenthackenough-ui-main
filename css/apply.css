@@ -41,13 +41,17 @@
 }
 
 #application .advance {
-  position: relative;
-  top: 10px;
+  padding-top: 1rem;
 }
 
 #application button {
   font-family: 'Droid Serif', serif;
   font-size: 0.8rem;
+}
+
+#application label {
+  border: 1px solid red;
+  margin-bottom: -1px;
 }
 
 #application button.btn-prev {
@@ -61,24 +65,15 @@
   border: 1px solid red;
 }
 
-#application label {
-  border: 1px solid red;
-  margin-bottom: -1px;
-}
-
-#application label span {
+#application .section label span {
   color: white;
   float: left;
   margin-top: 14px;
 }
 
-#application label input {
+#application .section label input {
   color: white;
   width: 2rem;
   float: left;
   margin-bottom: -2px;
-}
-
-#application input[type="checkbox"] {
-  background-color: red;
 }
