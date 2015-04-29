@@ -125,6 +125,10 @@ fieldset legend {
   width: 100vw;
 }
 
+.wow {
+  visibility: hidden;
+}
+
 #icons {
   margin-top: 2rem;
 }
