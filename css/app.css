@@ -125,8 +125,14 @@ fieldset legend {
   width: 100vw;
 }
 
-.wow {
-  visibility: hidden;
+#card {
+  margin-left: -30px;
+}
+
+@media (max-width: 1360px) {
+  #card {
+    display: none;
+  }
 }
 
 #icons {
