@@ -62,6 +62,15 @@ a.black:hover {
   color: #757575;
 }
 
+a.white {
+  text-decoration: underline;
+  color: white;
+}
+
+a.white:hover {
+  color: #EDEDED;
+}
+
 .float-right {
   float: right;
 }
@@ -130,7 +139,7 @@ fieldset legend {
 }
 
 @media (max-width: 1360px) {
-  #card {
+  .wow {
     display: none;
   }
 }
@@ -163,26 +172,83 @@ fieldset legend {
   margin-top: 2rem;
 }
 
-#about {
+.dark-section {
   background-color: #231F20;
   color: white;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
+  margin-top: -2px
 }
 
-#about h1,
-#about h2,
-#about h3,
-#about h4,
-#about h5,
-#about h6,
-#about p {
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6,
+.dark-section p,
+.dark-section label {
   color: white;
 }
 
-@media (min-width: 480px) and (max-width: 600px) {
+.light-section {
+  background-color: #FAFAFA;
+  color: #231F20;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  margin-top: -2px;
+}
+
+.light-section h1,
+.light-section h2,
+.light-section h3,
+.light-section h4,
+.light-section h5,
+.light-section h6,
+.light-section p {
+  color: #231F20;
+}
+
+#mlh-trust-badge {
+  visibility: hidden;
+}
+
+footer {
+  text-align: center;
+  background-color: #FAFAFA;
+  height: 7rem;
+  overflow: hidden;
+}
+
+footer * {
+  float: left;
+  height: 4rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+footer #hacksu-logo {
+  height: 5.5rem;
+}
+
+footer p {
+  font-family: 'Oswald';
+  line-height: 4rem;
+}
+
+footer .container {
+  width: 340px;
+  margin: auto;
+  float: none;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
   #date h2 {
     font-size: 1.5rem;
   }
@@ -213,5 +279,9 @@ fieldset legend {
 
   #date h2 {
     font-size: 2.2rem;
+  }
+
+  #mlh-trust-badge {
+    visibility: visible;
   }
 }
