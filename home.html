@@ -25,12 +25,12 @@
   <div class="row" id="updates">
     <div class="small-12 large-4 large-offset-4 columns">
       <p class="align-center">Get updates about KHE:</p>
-      <p ng-if="home.success" class="align-center">Thanks, you'll be hearing from us soon!</p>
-      <p ng-if="home.error" class="align-center">That email is already in use.</p>
-      <form ng-if="!home.success" ng-submit="home.mail()">
+      <p ng-repeat="message in home.mail.successes">{{message}}</p>
+      <p ng-repeat="message in home.mail.errors">{{message}}</p>
+      <form ng-if="!home.mail.successes" ng-submit="home.mail.add()">
         <div class="row collapse">
           <div class="small-10 columns">
-            <input type="text" placeholder="Email" ng-model="home.email">
+            <input type="text" placeholder="Email" ng-model="home.mail.email">
           </div>
           <div class="small-2 columns">
             <button href="#" class="button postfix">Go</button>
@@ -49,7 +49,7 @@
         <div class="small-12 columns">
           <h2>ABOUT</h2>
           <p>
-            Kent Hack Enough, hacKSU's annual hackathon, brings the passion and innovation behind hackathons to the Midwest. With over 250 participants, Kent Hack Enough will be the largest hackathon in Ohio. Top prizes will include cash and exposure to top companies. Admission is completely free for students, and travel costs will be reimbursed.
+            Kent Hack Enough is the annual fall hackathon at Kent State University. We bring some Kent State culture to the classic hackathon by mixing in some party With over 250 participants, Kent Hack Enough will be the largest hackathon in Ohio. Top prizes will include cash and exposure to top companies. Admission is completely free for students, and travel costs will be reimbursed.
           </p>
         </div>
       </div>
@@ -111,13 +111,19 @@
           </p>
         </div>
         <div class="small-12 large-6 columns">
-          <form>
+          <form ng-submit="home.contact.submit()">
+            <div class="row">
+              <div class="small-12 columns">
+                <p ng-repeat="message in home.contact.errors">{{message}}</p>
+                <p ng-repeat="message in home.contact.successes">{{message}}</p>
+              </div>
+            </div>
             <!-- Subject -->
             <div class="row">
               <div class="small-12 columns">
                 <label>
                   Subject
-                  <input type="text" placeholder="Travel Reimbursement">
+                  <input type="text" placeholder="Travel Reimbursement" ng-model="home.contact.new.subject">
                 </label>
               </div>
             </div>
@@ -126,7 +132,7 @@
               <div class="small-12 columns">
                 <label>
                   Name
-                  <input type="text" placeholder="John Doe">
+                  <input type="text" placeholder="John Doe" ng-model="home.contact.new.name">
                 </label>
               </div>
             </div>
@@ -135,7 +141,7 @@
               <div class="small-12 columns">
                 <label>
                   Email
-                  <input type="text" placeholder="name@example.com">
+                  <input type="email" placeholder="name@example.com" ng-model="home.contact.new.replyTo">
                 </label>
               </div>
             </div>
@@ -144,7 +150,7 @@
               <div class="small-12 columns">
                 <label>
                   Body
-                  <textarea rows="6" placeholder="What's up?"></textarea>
+                  <textarea rows="6" placeholder="What's up?" ng-model="home.contact.new.body"></textarea>
                 </label>
               </div>
             </div>
