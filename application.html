@@ -1,257 +1,51 @@
-<div id="application">
-  <div class="row">
-    <div class="small-12 columns">
-      <form ng-submit="application.submit()" class="validation">
-
-        <!-- Name -->
-        <div class="row section">
-          <p>What is your name?</p>
-          <input type="text" ng-model="application.name" placeholder="John Doe" required>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phone -->
-        <div class="row section">
-          <p>What is your phone number?</p>
-          <input type="text" ng-model="application.phone" placeholder="555-555-5555" required>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- School -->
-        <div class="row section">
-          <p>What school do you go to?</p>
-          <input type="text" ng-model="application.school" placeholder="State University" required>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- T-shirt size -->
-        <div class="row section">
-          <p>What is your t-shirt size?</p>
-          <select ng-model="application.shirt" required>
-            <option value="S">Small</option>
-            <option value="M" selected>Medium</option>
-            <option value="L">Large</option>
-            <option value="XL">X-Large</option>
-          </select>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dietary restrictions -->
-        <div class="row section">
-          <p>Select any dietary restrictions you have:</p>
-          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns dietary-item cursor-pointer">
-            <input
-              type="checkbox"
-              name="selectedRestrictions[]"
-              value="{{restriction}}"
-              ng-checked="application.diet.selected.indexOf(restriction) > -1"
-              ng-click="application.diet.toggleSelection(restriction)"
-            > <span>{{restriction}}</span>
-          </label>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <br>
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <br>
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Age -->
-        <div class="row section">
-          <p>How old are you?</p>
-          <input type="text" ng-model="application.age" required>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gender -->
-        <div class="row section">
-          <p>Gender:</p>
-          <select ng-model="application.gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Class -->
-        <div class="row section">
-          <p>What is your year in school?</p>
-          <select ng-model="application.year" required>
-            <option value="Senior">Senior</option>
-            <option value="Junior">Junior</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Freshman">Freshman</option>
-            <option value="High School">High School</option>
-          </select>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- First hackathon -->
-        <div class="row section">
-          <p>Is this your first hackathon?</p>
-          <select ng-model="application.first">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Major -->
-        <div class="row section">
-          <p>What is your major?</p>
-          <input type="text" ng-model="application.major" required>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Travel -->
-        <div class="row section">
-          <p>Will you require travel reimbursement?</p>
-          <select ng-model="application.travel" required>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Agreements -->
-        <div class="row section">
-
-          <label class="small-12 columns">
-            <input type="checkbox" ng-model="application.demographic" value="true" required>
-            <span>I agree to allow my demographic information to be used anonymously to improve hackathons.</span>
-          </label>
-          <label class="small-12 columns">
-            <input type="checkbox" ng-model="application.conduct" value="true" required>
-            <span>I agree to the MLH Code of Conduct</span>
-          </label>
-          <label class="small-12 columns">
-            <input type="checkbox" ng-model="application.waiver" value="true" required>
-            <span>I agree to this event waiver.</span>
-            <br>
-          </label>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-5 columns">
-              <br>
-              <button type="button" class="button secondary btn-prev">Back [shift+enter]</button>
-            </div>
-            <div class="small-5 small-offset-2 columns align-right">
-              <br>
-              <button type="button" class="button btn-next">Next [enter]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Submission button -->
-        <div class="row section">
-          <button class="small-12 columns">Submit</button>
-
-          <!-- Navigation buttons -->
-          <div class="row advance">
-            <div class="small-12 columns">
-              <button type="button" class="button secondary btn-prev small-4 small-offset-4 columns"><br>Back [shift+enter]<br><br></button>
-            </div>
-          </div>
-        </div>
-
-      </form>
-    </div>
+<div id="application" class="container">
+  <header>
+    <h1>Apply to Kent Hack Enough</h1>
+  </header>
+  <div class="main clearfix">
+    <form id="nl-form" class="nl-form">
+      I am
+      <input type="text" placeholder="John Doe" data-subline="Your full name">,
+      a
+      <select>
+        <option>male</option>
+        <option>female</option>
+        <option>other</option>
+      </select>
+      student at
+      <input type="text" placeholder="State University" data-subline="The name of your school">,
+      where I study
+      <input type="text" placeholder="Computer Science" data-subline="Your major">.
+      You can reach me at
+      <input type="tel" placeholder="(555) 555-5555" data-subline="Your phone number">.
+      I wear a
+      <select>
+        <option>small</option>
+        <option>medium</option>
+        <option>large</option>
+        <option>x-large</option>
+      </select>
+      t-shirt.
+      I am a
+      <input type="num" placeholder="21" data-subline="Your age">
+      year-old
+      <select>
+        <option>Freshman</option>
+        <option>Sophomore</option>
+        <option>Junior</option>
+        <option>Senior</option>
+        <option>High Schooler</option>
+      </select>,
+      and KHE
+      <select>
+        <option value="true">is</option>
+        <option value="false">is not</option>
+      </select>
+      my first hackathon.
+      <div class="nl-submit-wrap">
+        <button class="nl-submit" type="submit">Apply</button>
+      </div>
+      <div class="nl-overlay"></div>
+    </form>
   </div>
-</div>
+</div><!-- /application -->
