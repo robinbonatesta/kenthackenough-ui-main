@@ -1,11 +1,13 @@
 <div id="application" class="container">
   <header>
     <h1>Apply to Kent Hack Enough</h1>
+    <p class="white">{{app}}</p>
+    <input type="text" ng-model="app.name">
   </header>
   <div class="main clearfix">
     <form id="nl-form" class="nl-form">
       I am
-      <input type="text" placeholder="John Doe" data-subline="Your full name">,
+      <input type="text" placeholder="John Doe" data-subline="Your full name" ng-model="app.name">,
       a
       <select>
         <option>male</option>

@@ -40,7 +40,7 @@ NLForm.prototype = {
       this.fields[ this.fldOpen ].close();
     }
   }
-}
+};
 
 function NLField( form, el, type, idx ) {
   this.form = form;
@@ -169,7 +169,7 @@ NLField.prototype = {
       this.elOriginal.value = this.getinput.value;
     }
   }
-}
+};
 
 // add to global namespace
 window.NLForm = NLForm;
@@ -182,6 +182,9 @@ angular
 
       restrict: 'E',
       templateUrl: '/application.html',
+      scope: {
+        app: '=ngModel'
+      },
 
       link: function (scope, element, attrs) {
         $compile(element.contents())(scope);
