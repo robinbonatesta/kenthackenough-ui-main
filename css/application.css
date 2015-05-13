@@ -192,30 +192,57 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 
 /* custom placeholder color */
 input::-webkit-input-placeholder {
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.4);
 }
 
 input:active::-webkit-input-placeholder ,
 input:focus::-webkit-input-placeholder {
-  color: rgba(255,255,255,0.2);
+  color: rgba(0,0,0,0.2);
 }
 
 input::-moz-placeholder {
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.4);
 }
 
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
-  color: rgba(255,255,255,0.2);
+  color: rgba(0,0,0,0.2);
 }
 
 input:-ms-input-placeholder {
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.4);
 }
 
 input:active::-ms-input-placeholder ,
 input:focus::-ms-input-placeholder {
-  color: rgba(255,255,255,0.2);
+  color: rgba(0,0,0,0.2);
+}
+
+textarea::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.4);
+}
+
+textarea:active::-webkit-input-placeholder ,
+textarea:focus::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.2);
+}
+
+textarea::-moz-placeholder {
+  color: rgba(0,0,0,0.4);
+}
+
+textarea:active::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: rgba(0,0,0,0.2);
+}
+
+textarea:-ms-input-placeholder {
+  color: rgba(0,0,0,0.4);
+}
+
+textarea:active::-ms-input-placeholder ,
+textarea:focus::-ms-input-placeholder {
+  color: rgba(0,0,0,0.2);
 }
 
 /* example field below text input */
