@@ -64,14 +64,29 @@
 
 #application article .text label {
   position: absolute;
-  color: white;
+  color: #CC0000;
   font-size: 0.8rem;
   z-index: 10;
   margin-top: 3rem;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   background-color: red;
-  border-top: 1px dashed white;
+  border-top: 1px dashed #CC0000;
   width: 90vw;
+  height: 1.8rem;
+}
+
+#application article .text label button {
+  z-index: 10;
+  position: absolute;
+  background: #CC0000;
+  top: -3.1rem;
+  height: 4.81rem;
+  right: 0;
+}
+
+#application article .text label button i {
+  color: white;
+  font-size: 2rem;
 }
 
 #application footer {
