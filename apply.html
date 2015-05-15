@@ -26,7 +26,7 @@
               <option value="female">female</option>
               <option value="other">other</option>
             </select>
-            <label>Your gender <button></button></label>
+            <label>Your gender <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         student at
@@ -63,6 +63,7 @@
               <option value="L">large</option>
               <option value="XL">x-large</option>
             </select>
+            <label>Your shirt size <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         t-shirt.
@@ -85,6 +86,7 @@
               <option value="Senior">Senior</option>
               <option value="High School">High Schooler</option>
             </select>
+            <label>Your year in school <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>,
         and KHE
@@ -95,25 +97,13 @@
               <option value="true">is</option>
               <option value="false">is not</option>
             </select>
+            <label>Is KHE your first hackathon? <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
-        my first <span contenteditable>hackathon</span>.
-        <br>
-        I have the following dietary restrictions:
-        <span class="checkbox">
-          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns">
-            <input
-              type="checkbox"
-              name="selectedRestrictions[]"
-              value="{{restriction}}"
-              ng-checked="application.diet.selected.indexOf(restriction) > -1"
-              ng-click="application.diet.toggleSelection(restriction)"
-            > {{restriction}}
-          </label>
-        </span>
+        my first hackathon.
       </article>
       <footer>
-        <button>Apply</button>
+        <button><span><i class="fa fa-arrow-right"></i></span> Apply</button>
       </footer>
     </form>
   </div>
@@ -121,19 +111,33 @@
   <script>
 
   jQuery(document).ready(function ($) {
+    var form = $('#application form');
     var texts = $('#application .text');
     var selects = $('#application .select');
-    var checkboxes = $('#application .checkbox');
-
     var blinds = $('#application .blinds');
 
     // Hide all form inputs
-    texts.children('.input').hide();
-    selects.children('.input').hide();
-    checkboxes.children('label').hide();
+    var hidden = false;
+    function hideAll() {
+      texts.children('.input').hide();
+      selects.children('.input').hide();
+      blinds.hide();
+      hidden = true;
+    }
+    hideAll();
+
+    $(window).keypress(function (event) {
+      if (event.keyCode == 13) {
+        if (!hidden) {
+          event.preventDefault();
+          hideAll();
+        }
+      }
+    });
 
     // Show text inputs on click
     texts.click(function () {
+      hidden = false;
       blinds.show();
       $(this)
         .children('.input')
@@ -142,13 +146,13 @@
         .focus()
         .select()
         .blur(function () {
-          $(this).parent('.input').hide();
-          blinds.hide();
+          hideAll();
         });
     });
 
     // Show selects on click
     selects.click(function () {
+      hidden = false;
       blinds.show();
       $(this)
         .children('.input')
@@ -156,14 +160,8 @@
         .children('select')
         .focus()
         .blur(function () {
-          $(this).parent('.input').hide();
-          blinds.hide();
+          hideAll();
         });
-    });
-
-    // Show checkboxes on click
-    checkboxes.click(function () {
-      $(this).children('label').show();
     });
   });
 
