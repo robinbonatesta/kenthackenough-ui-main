@@ -17,6 +17,10 @@
   display: none;
 }
 
+#application *:focus {
+  outline: 0;
+}
+
 #application input::selection {
   background: #404040;
 }
@@ -26,8 +30,9 @@
 }
 
 #application header {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   text-align: center;
+  text-transform: uppercase;
   padding: 1rem;
 }
 
@@ -60,14 +65,16 @@
   font-family: 'Droid-Serif';
   border: none;
   position: absolute;
+  top: 10rem;
   left: 5vw;
   font-size: 1.75rem;
   height: 3rem;
   width: 68vw;
 }
 
-#application article .text label {
+#application article label {
   position: absolute;
+  top: 10rem;
   color: #CC0000;
   font-size: 0.8rem;
   z-index: 10;
@@ -79,22 +86,48 @@
   height: 1.8rem;
 }
 
-#application article .text label button {
+#application article label button {
   z-index: 10;
   position: absolute;
   background: #CC0000;
-  top: -3.1rem;
+  top: -3.05rem;
   height: 4.81rem;
   width: 22vw;
   right: 0;
 }
 
-#application article .text label button i {
+#application article label button i {
   color: white;
   font-size: 2rem;
 }
 
 #application footer {
   background: none;
-  padding: 1rem;
+  width: 90vw;
+  margin: auto;
+}
+
+#application footer button {
+  width: 90vw;
+  height: 4rem;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 0;
+}
+
+#application footer button span {
+  position: absolute;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 15vw;
+  height: 4rem;
+}
+
+#application footer button span i {
+  color: white;
+  font-size: 2rem;
+  width: 15vw;
+  margin: auto;
+  margin-top: -1rem;
 }
