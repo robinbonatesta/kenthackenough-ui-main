@@ -28,6 +28,10 @@ button:hover, .button:hover {
   background-color: #E70000;
 }
 
+button:focus {
+  background-color: #E70000;
+}
+
 .bold {
   font-weight: bold;
 }
