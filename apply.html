@@ -4,83 +4,103 @@
 
     <div class="blinds"></div>
 
-    <form ng-submit="application.submit">
+    <form ng-submit="application.submit()">
       <header>
         <h1>Apply to Kent Hack Enough</h1>
       </header>
       <article>
         I am
         <span class="text">
-          {{application.name}}
+          {{application.name | application:'name'}}
           <span class="input">
-            <input type="text" placeholder="John Doe" data-subline="Your full name" ng-model="application.name">
+            <input type="text" placeholder="John Doe" ng-model="application.name">
             <label>Your full name <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>,
         a
-        <span class="input select">
-          {{application.gender}}
-          <select ng-model="application.gender">
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="other">other</option>
-          </select>
+        <span class="select">
+          {{application.gender | application:'gender'}}
+          <span class="input">
+            <select ng-model="application.gender">
+              <option value="male">male</option>
+              <option value="female">female</option>
+              <option value="other">other</option>
+            </select>
+          </span>
         </span>
         student at
-        <span class="input text">
-          {{application.school}}
-          <input type="text" placeholder="State University" data-subline="The name of your school" ng-model="application.school">
+        <span class="text">
+          {{application.school | application:'school'}}
+          <span class="input">
+            <input type="text" placeholder="State University" ng-model="application.school">
+            <label>Your school <button><i class="fa fa-arrow-right"></i></button></label>
+          </span>
         </span>,
         where I study
-        <span class="input text">
-          {{application.major}}
-          <input type="text" placeholder="Computer Science" data-subline="Your major" ng-model="application.major">
+        <span class="text">
+          {{application.major | application:'major'}}
+          <span class="input">
+            <input type="text" placeholder="Computer Science" ng-model="application.major">
+            <label>Your major <button><i class="fa fa-arrow-right"></i></button></label>
+          </span>
         </span>.
         You can reach me at
-        <span class="input text">
-          {{application.phone}}
-          <input type="tel" placeholder="(555) 555-5555" data-subline="Your phone number" ng-model="application.phone">
+        <span class="text">
+          {{application.phone | application:'phone'}}
+          <span class="input">
+            <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
+            <label>Your phone number <button><i class="fa fa-arrow-right"></i></button></label>
+          </span>
         </span>.
         I wear a
-        <span class="input select">
-          {{application.shirt}}
-          <select ng-model="application.shirt">
-            <option value="S">small</option>
-            <option value="M">medium</option>
-            <option value="L">large</option>
-            <option value="XL">x-large</option>
-          </select>
+        <span class="select">
+          {{application.shirt | application:'shirt'}}
+          <span class="input">
+            <select ng-model="application.shirt">
+              <option value="S">small</option>
+              <option value="M">medium</option>
+              <option value="L">large</option>
+              <option value="XL">x-large</option>
+            </select>
+          </span>
         </span>
         t-shirt.
         I am a
-        <span class="input text">
-          {{application.age}}
-          <input type="number" placeholder="21" data-subline="Your age" ng-model="application.age">
+        <span class="text">
+          {{application.age | application:'age'}}
+          <span class="input">
+            <input type="number" placeholder="21" ng-model="application.age">
+            <label>Your age <button><i class="fa fa-arrow-right"></i></button></label>
+          </span>
         </span>
         year-old
-        <span class="input select">
-          {{application.year}}
-          <select ng-model="application.year">
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-            <option value="High School">High Schooler</option>
-          </select>
+        <span class="select">
+          {{application.year | application:'year'}}
+          <span class="input">
+            <select ng-model="application.year">
+              <option value="Freshman">Freshman</option>
+              <option value="Sophomore">Sophomore</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+              <option value="High School">High Schooler</option>
+            </select>
+          </span>
         </span>,
         and KHE
-        <span class="input select">
-          {{application.first}}
-          <select ng-model="application.first">
-            <option value="true">is</option>
-            <option value="false">is not</option>
-          </select>
+        <span class="select">
+          {{application.first | application:'first'}}
+          <span class="input">
+            <select ng-model="application.first">
+              <option value="true">is</option>
+              <option value="false">is not</option>
+            </select>
+          </span>
         </span>
         my first hackathon.
         <br>
         I have the following dietary restrictions:
-        <span class="input checkbox">
-          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns checkbox">
+        <span class="checkbox">
+          <label ng-repeat="restriction in application.diet.possible" class="small-12 columns">
             <input
               type="checkbox"
               name="selectedRestrictions[]"
@@ -101,14 +121,14 @@
 
   jQuery(document).ready(function ($) {
     var texts = $('#application .text');
-    var selects = $('#application .input.select');
-    var checkboxes = $('#application .input.checkbox');
+    var selects = $('#application .select');
+    var checkboxes = $('#application .checkbox');
 
     var blinds = $('#application .blinds');
 
     // Hide all form inputs
     texts.children('.input').hide();
-    selects.children('select').hide();
+    selects.children('.input').hide();
     checkboxes.children('label').hide();
 
     // Show text inputs on click
@@ -130,11 +150,12 @@
     selects.click(function () {
       blinds.show();
       $(this)
-        .children('select')
+        .children('.input')
         .show()
+        .children('select')
         .focus()
         .blur(function () {
-          $(this).hide();
+          $(this).parent('.input').hide();
           blinds.hide();
         });
     });

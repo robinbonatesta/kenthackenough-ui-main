@@ -7,7 +7,7 @@
 
 #application .blinds {
   background-color: black;
-  opacity: 0.70;
+  opacity: 0.8;
   z-index: 5;
   width: 100vw;
   height: 100vh;
@@ -40,6 +40,7 @@
   width: 90vw;
   margin: auto;
   font-size: 1.75rem;
+  line-height: 3rem;
   color: white;
   padding: 1rem 0 1rem 0;
 }
@@ -47,16 +48,19 @@
 #application article span {
   color: red;
   border-bottom: 1px dashed red;
+  padding-bottom: 0.2rem;
   cursor: pointer;
 }
 
 #application article .text input,
-#application article .input.select select {
+#application article .select select {
   z-index: 10;
   background-color: red;
   color: white;
+  font-family: 'Droid-Serif';
   border: none;
   position: absolute;
+  left: 5vw;
   font-size: 1.75rem;
   height: 3rem;
   width: 90vw;
