@@ -100,7 +100,16 @@
             <label>Is KHE your first hackathon? <button><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
-        my first hackathon.
+        my first hackathon. I have the following dietary restrictions:
+        <span class="checkbox">
+          {{application.dietary | application:'dietary'}}
+          <span class="input">
+            <p ng-repeat="restriction in application.diet.possible" ng-click="application.diet.toggleSelection(restriction)" ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}" class="item">
+              {{restriction}}
+            </p>
+            <label>Dietary Restrictions <button class="dismissCb" type="button"><i class="fa fa-arrow-right"></i></button></label>
+          </span>
+        </span>
       </article>
       <footer>
         <button><span><i class="fa fa-arrow-right"></i></span> Apply</button>
@@ -114,6 +123,7 @@
     var form = $('#application form');
     var texts = $('#application .text');
     var selects = $('#application .select');
+    var checkboxes = $('#application .checkbox');
     var blinds = $('#application .blinds');
 
     // Hide all form inputs
@@ -121,6 +131,7 @@
     function hideAll() {
       texts.children('.input').hide();
       selects.children('.input').hide();
+      checkboxes.children('.input').hide();
       blinds.hide();
       hidden = true;
     }
@@ -145,9 +156,7 @@
         .children('input')
         .focus()
         .select()
-        .blur(function () {
-          hideAll();
-        });
+        .blur(hideAll);
     });
 
     // Show selects on click
@@ -159,9 +168,19 @@
         .show()
         .children('select')
         .focus()
-        .blur(function () {
-          hideAll();
-        });
+        .blur(hideAll);
+    });
+
+    // Show checkboxes on click
+    checkboxes.click(function () {
+      hidden = false;
+      blinds.show();
+      $(this).children('.input').show();
+      blinds.click(hideAll);
+    });
+
+    $('.dismissCb').click(function () {
+      hideAll();
     });
   });
 

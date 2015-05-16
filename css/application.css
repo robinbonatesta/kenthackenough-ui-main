@@ -26,7 +26,23 @@
 }
 
 #application::-moz-selection {
-  background: red;
+  background: #404040;
+}
+
+#application *::-webkit-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#application *:-moz-placeholder { /* Firefox 18- */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#application *::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#application *:-ms-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
 }
 
 #application header {
@@ -55,6 +71,13 @@
   border-bottom: 1px dashed red;
   padding-bottom: 0.2rem;
   cursor: pointer;
+}
+
+#application article span.no-input {
+  color: white;
+  border: none;
+  padding: 0;
+  cursor: text;
 }
 
 #application article .text input,
@@ -99,6 +122,66 @@
 #application article label button i {
   color: white;
   font-size: 2rem;
+}
+
+#application article p {
+  color: white;
+}
+
+#application article .small {
+  font-size: 1rem;
+}
+
+#application article .checkbox .input {
+  z-index: 10;
+  background: red;
+  position: absolute;
+  top: 10rem;
+  left: 5vw;
+  width: 90vw;
+}
+
+#application article .checkbox .item {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+#application article .checkbox .item.checked {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#application article .checkbox .item::before {
+  content: '\f096';
+  font-family: 'FontAwesome';
+  margin-right: 0.2rem;
+}
+
+#application article .checkbox .item.checked::before {
+  content: '\f046';
+  font-family: 'FontAwesome';
+  margin-right: 0.2rem;
+}
+
+#application article .checkbox label {
+  margin-top: 2.8rem;
+  height: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+#application article .checkbox label button {
+  height: 2.5rem;
+  top: -1px;
+  padding: 0;
+}
+
+#application article .checkbox label button i {
+  font-size: 1rem;
 }
 
 #application footer {
