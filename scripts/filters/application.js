@@ -58,7 +58,7 @@ angular
     };
 
     self.dietary = function (restrictions) {
-      if (restrictions.length) {
+      if (restrictions && restrictions.length) {
         var diet = restrictions[0];
         for (var i = 1; i < restrictions.length; i++) {
           diet = diet + ', ' + restrictions[i];

@@ -5,6 +5,12 @@
   background-color: #1C1C1C;
 }
 
+#application form {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll
+}
+
 #application .blinds {
   background-color: black;
   opacity: 0.8;
@@ -78,6 +84,19 @@
   border: none;
   padding: 0;
   cursor: text;
+}
+
+#application .alert-box {
+  background-color: red;
+  border: 1px solid #BE0000;
+}
+
+#application .alert-box ul {
+  margin-bottom: 0;
+}
+
+#application .alert-box * {
+  color: white;
 }
 
 #application article .text input,
@@ -184,8 +203,40 @@
   font-size: 1rem;
 }
 
+#application .agreements {
+  padding: 1rem 0 2rem 0;
+}
+
+#application .agreements input[type="checkbox"] {
+  display: none;
+}
+
+#application .agreements label {
+  margin-left: 0;
+  font-size: 1rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+#application .agreements input[type="checkbox"] + label::before {
+  content: '\f096';
+  font-family: 'FontAwesome';
+  margin-right: 0.5rem;
+}
+
+#application .agreements input[type="checkbox"]:checked + label::before {
+  content: '\f046';
+  font-family: 'FontAwesome';
+  margin-right: 0.4rem;
+}
+
 #application footer {
-  background: none;
   width: 90vw;
   margin: auto;
 }
@@ -205,6 +256,7 @@
   background: rgba(0, 0, 0, 0.2);
   width: 15vw;
   height: 4rem;
+  top: 0;
 }
 
 #application footer button span i {
@@ -212,5 +264,5 @@
   font-size: 2rem;
   width: 15vw;
   margin: auto;
-  margin-top: -1rem;
+  margin-top: 1rem;
 }

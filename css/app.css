@@ -220,14 +220,14 @@ fieldset legend {
   visibility: hidden;
 }
 
-footer {
+footer#site-footer {
   text-align: center;
   background-color: #FAFAFA;
   height: 7rem;
   overflow: hidden;
 }
 
-footer * {
+footer#site-footer * {
   float: left;
   height: 4rem;
   position: relative;
@@ -236,11 +236,11 @@ footer * {
   -webkit-transform: translateY(-50%);
 }
 
-footer #hacksu-logo {
+footer#site-footer #hacksu-logo {
   height: 5.5rem;
 }
 
-footer p {
+footer#site-footer p {
   font-family: 'Oswald';
   line-height: 4rem;
 }

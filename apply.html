@@ -14,7 +14,7 @@
           {{application.name | application:'name'}}
           <span class="input">
             <input type="text" placeholder="John Doe" ng-model="application.name">
-            <label>Your full name <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your full name <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>,
         a
@@ -26,7 +26,7 @@
               <option value="female">female</option>
               <option value="other">other</option>
             </select>
-            <label>Your gender <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your gender <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         student at
@@ -34,7 +34,7 @@
           {{application.school | application:'school'}}
           <span class="input">
             <input type="text" placeholder="State University" ng-model="application.school">
-            <label>Your school <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your school <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>,
         where I study
@@ -42,7 +42,7 @@
           {{application.major | application:'major'}}
           <span class="input">
             <input type="text" placeholder="Computer Science" ng-model="application.major">
-            <label>Your major <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your major <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>.
         You can reach me at
@@ -50,7 +50,7 @@
           {{application.phone | application:'phone'}}
           <span class="input">
             <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
-            <label>Your phone number <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your phone number <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>.
         I wear a
@@ -63,7 +63,7 @@
               <option value="L">large</option>
               <option value="XL">x-large</option>
             </select>
-            <label>Your shirt size <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your shirt size <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         t-shirt.
@@ -72,7 +72,7 @@
           {{application.age | application:'age'}}
           <span class="input">
             <input type="number" placeholder="21" ng-model="application.age">
-            <label>Your age <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your age <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         year-old
@@ -86,7 +86,7 @@
               <option value="Senior">Senior</option>
               <option value="High School">High Schooler</option>
             </select>
-            <label>Your year in school <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Your year in school <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>,
         and KHE
@@ -97,7 +97,7 @@
               <option value="true">is</option>
               <option value="false">is not</option>
             </select>
-            <label>Is KHE your first hackathon? <button><i class="fa fa-arrow-right"></i></button></label>
+            <label>Is KHE your first hackathon? <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
         my first hackathon. I have the following dietary restrictions:
@@ -107,11 +107,24 @@
             <p ng-repeat="restriction in application.diet.possible" ng-click="application.diet.toggleSelection(restriction)" ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}" class="item">
               {{restriction}}
             </p>
-            <label>Dietary Restrictions <button class="dismissCb" type="button"><i class="fa fa-arrow-right"></i></button></label>
+            <label>Dietary Restrictions <button type="button"><i class="fa fa-arrow-right"></i></button></label>
           </span>
         </span>
       </article>
       <footer>
+        <div class="agreements">
+          <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
+          <label for="cb-conduct">I agree to the MLH Code of Conduct</label>
+          <input id="cb-waiver" type="checkbox" ng-model="application.waiver">
+          <label for="cb-waiver">I agree to the event waiver</label>
+          <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
+          <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
+        </div>
+        <div data-alert class="alert-box alert" ng-if="application.errors">
+          <ul>
+            <li ng-repeat="e in application.errors">{{e}}</li>
+          </ul>
+        </div>
         <button><span><i class="fa fa-arrow-right"></i></span> Apply</button>
       </footer>
     </form>
@@ -146,6 +159,9 @@
       }
     });
 
+    $('button[type="button"]').click(hideAll);
+    $('button[type="button"]').focus(hideAll);
+
     // Show text inputs on click
     texts.click(function () {
       hidden = false;
@@ -177,11 +193,9 @@
       blinds.show();
       $(this).children('.input').show();
       blinds.click(hideAll);
+      $(this).find('button').focus(hideAll);
     });
 
-    $('.dismissCb').click(function () {
-      hideAll();
-    });
   });
 
   </script>
