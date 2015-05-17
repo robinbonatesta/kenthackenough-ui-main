@@ -1,15 +1,22 @@
 angular
   .module('khe')
-  .config(['$routeProvider', function ($router) {
-    $router
-      .when('/application', {
-        templateUrl: '/apply.html',
+  .config(['$stateProvider', '$urlRouterProvider', function ($state, $url) {
+    $url.when('/apply', '/apply/1');
+    $url.when('/apply/', '/apply/1');
+    $state
+      .state('apply', {
+        url: '/apply',
+        templateUrl: '/views/application/application.html',
         controller: 'ApplicationCtrl as application'
       })
-      .when('/apply', {
-        templateUrl: '/apply.html',
-        controller: 'ApplicationCtrl as application'
-      });
+        .state('apply.page1', {
+          url: '/1',
+          templateUrl: '/views/application/page1.html'
+        })
+        .state('apply.page2', {
+          url: '/2',
+          templateUrl: '/views/application/page2.html'
+        });
   }])
   .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {
 
@@ -20,20 +27,16 @@ angular
     // Get the logged in user if it exists
     self.me = user.getMe();
 
+    /**
+    * Open and close form inputs
+    */
     $scope.display = {};
 
-    /**
-    * Show a popup of a form field
-    * @param field A name for the field
-    */
     $scope.open = function (field) {
       $scope.display.blinds = true;
       $scope.display[field] = true;
     };
 
-    /**
-    * Close all form inputs
-    */
     $scope.closeAll = function () {
       $scope.display = {};
     };
