@@ -1,0 +1,35 @@
+<header>
+  <h1>Apply to Kent Hack Enough</h1>
+</header>
+<div class="page-indicator">
+  <i class="fa fa-circle-o"></i>
+  <i class="fa fa-circle"></i>
+</div>
+<article>
+  <span class="small white">Dietary restrictions:</span>
+  <a ng-click="open('dietary')" class="small">{{application.dietary | application:'dietary'}}</a>
+  <div class="input checkbox" ng-if="display.dietary">
+    <p ng-repeat="restriction in application.diet.possible"
+       ng-click="application.diet.toggleSelection(restriction)"
+       ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}"
+       class="item"> {{restriction}} </p>
+    <label>Dietary restrictions</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <div class="agreements">
+    <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
+    <label for="cb-conduct">I agree to the MLH Code of Conduct</label>
+    <input id="cb-waiver" type="checkbox" ng-model="application.waiver">
+    <label for="cb-waiver">I agree to the event waiver</label>
+    <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
+    <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
+  </div>
+</article>
+<footer>
+  <div data-alert class="alert-box alert" ng-if="application.errors">
+    <ul>
+      <li ng-repeat="e in application.errors">{{e}}</li>
+    </ul>
+  </div>
+  <button><span><i class="fa fa-arrow-right"></i></span> Apply</button>
+</footer>
