@@ -23,8 +23,9 @@
     "underscore": "1.8.x",
     "socket.io-client": "1.3.x",
     "snap.svg": "0.4.x",
-    "animate.css": "~3.2.6",
-    "wow.js": "~1.1.2"
+    "animate.css": "3.2.x",
+    "wow.js": "1.1.x",
+    "angular-ui-router": "0.2.x"
   },
   "resolutions": {
     "angular": "1.3.x"
