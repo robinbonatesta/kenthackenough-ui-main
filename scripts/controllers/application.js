@@ -11,7 +11,7 @@ angular
         controller: 'ApplicationCtrl as application'
       });
   }])
-  .controller('ApplicationCtrl', ['$location', '$filter', 'User', 'Application', function ($location, $filter, User, Application) {
+  .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {
 
     var self = this;
     var user = new User();
@@ -19,6 +19,24 @@ angular
 
     // Get the logged in user if it exists
     self.me = user.getMe();
+
+    $scope.display = {};
+
+    /**
+    * Show a popup of a form field
+    * @param field A name for the field
+    */
+    $scope.open = function (field) {
+      $scope.display.blinds = true;
+      $scope.display[field] = true;
+    };
+
+    /**
+    * Close all form inputs
+    */
+    $scope.closeAll = function () {
+      $scope.display = {};
+    };
 
     /**
     * An object with an array of possible dietary restrictions,

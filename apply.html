@@ -2,7 +2,7 @@
 
   <div id="application">
 
-    <div class="blinds"></div>
+    <div class="blinds" ng-if="display.blinds" ng-click="closeAll()"></div>
 
     <form ng-submit="application.submit()">
       <header>
@@ -10,106 +10,97 @@
       </header>
       <article>
         I am
-        <span class="text">
-          {{application.name | application:'name'}}
-          <span class="input">
-            <input type="text" placeholder="John Doe" ng-model="application.name">
-            <label>Your full name <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>,
+        <a ng-click="open('name')">{{application.name | application:'name'}}</a>,
+        <div class="input text" ng-if="display.name">
+          <input type="text" placeholder="John Doe" ng-model="application.name">
+          <label>Your full name</label>
+          <button ng-click="closeAll()"></button>
+        </div>
         a
-        <span class="select">
-          {{application.gender | application:'gender'}}
-          <span class="input">
-            <select ng-model="application.gender">
-              <option value="male">male</option>
-              <option value="female">female</option>
-              <option value="other">other</option>
-            </select>
-            <label>Your gender <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>
+        <a ng-click="open('gender')">{{application.gender | application:'gender'}}</a>
+        <div class="input select" ng-if="display.gender">
+          <select ng-model="application.gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+          </select>
+          <label>Your gender</label>
+          <button ng-click="closeAll()"></button>
+        </div>
         student at
-        <span class="text">
-          {{application.school | application:'school'}}
-          <span class="input">
-            <input type="text" placeholder="State University" ng-model="application.school">
-            <label>Your school <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>,
+        <a ng-click="open('school')">{{application.school | application:'school'}}</a>
+        <div class="input text" ng-if="display.school">
+          <input type="text" placeholder="State University" ng-model="application.school">
+          <label>Your school</label>
+          <button ng-click="closeAll()"></button>
+        </div>
         where I study
-        <span class="text">
-          {{application.major | application:'major'}}
-          <span class="input">
-            <input type="text" placeholder="Computer Science" ng-model="application.major">
-            <label>Your major <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>.
-        You can reach me at
-        <span class="text">
-          {{application.phone | application:'phone'}}
-          <span class="input">
-            <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
-            <label>Your phone number <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>.
-        I wear a
-        <span class="select">
-          {{application.shirt | application:'shirt'}}
-          <span class="input">
-            <select ng-model="application.shirt">
-              <option value="S">small</option>
-              <option value="M">medium</option>
-              <option value="L">large</option>
-              <option value="XL">x-large</option>
-            </select>
-            <label>Your shirt size <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>
-        t-shirt.
-        I am a
-        <span class="text">
-          {{application.age | application:'age'}}
-          <span class="input">
-            <input type="number" placeholder="21" ng-model="application.age">
-            <label>Your age <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>
+        <a ng-click="open('major')">{{application.major | application:'major'}}</a>
+        <div class="input text" ng-if="display.major">
+          <input type="text" placeholder="Computer Science" ng-model="application.major">
+          <label>Your major</label>
+          <button ng-click="closeAll()"></button>
+        </div>
+        . You can reach me at
+        <a ng-click="open('phone')">{{application.phone | application:'phone'}}</a>
+        <div class="input text" ng-if="display.phone">
+          <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
+          <label>Your phone number</label>
+          <button ng-click="closeAll()"></button>
+        </div>
+        . I wear a
+        <a ng-click="open('shirt')">{{application.shirt | application:'shirt'}}</a>
+        <div class="input select" ng-if="display.shirt">
+          <select ng-model="application.shirt">
+            <option value="S">small</option>
+            <option value="M">medium</option>
+            <option value="L">large</option>
+            <option value="XL">x-large</option>
+          </select>
+          <label>Your shirt size</label>
+          <button ng-click="closeAll()"></button>
+        </div>
+        t-shirt. I am a
+        <a ng-click="open('age')">{{application.age | application:'age'}}</a>
+        <div class="input text" ng-if="display.age">
+          <input type="number" placeholder="21" ng-model="application.age">
+          <label>Your age</label>
+          <button ng-click="closeAll()"></button>
+        </div>
         year-old
-        <span class="select">
-          {{application.year | application:'year'}}
-          <span class="input">
-            <select ng-model="application.year">
-              <option value="Freshman">Freshman</option>
-              <option value="Sophomore">Sophomore</option>
-              <option value="Junior">Junior</option>
-              <option value="Senior">Senior</option>
-              <option value="High School">High Schooler</option>
-            </select>
-            <label>Your year in school <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>,
-        and KHE
-        <span class="select">
-          {{application.first | application:'first'}}
-          <span class="input">
-            <select ng-model="application.first">
-              <option value="true">is</option>
-              <option value="false">is not</option>
-            </select>
-            <label>Is KHE your first hackathon? <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>
+        <a ng-click="open('year')">{{application.year | application:'year'}}</a>
+        <div class="input select" ng-if="display.year">
+          <select ng-model="application.year">
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="High School">High Schooler</option>
+          </select>
+          <label>Your year in school</label>
+          <button ng-click="closeAll()"></button>
+        </div>
+        , and KHE
+        <a ng-click="open('first')">{{application.first | application:'first'}}</a>
+        <div class="input select" ng-if="display.first">
+          <select ng-model="application.first">
+            <option value="true">is</option>
+            <option value="false">is not</option>
+          </select>
+          <label>Is KHE your first hackathon?</label>
+          <button ng-click="closeAll()"></button>
+        </div>
         my first hackathon. I have the following dietary restrictions:
-        <span class="checkbox">
-          {{application.dietary | application:'dietary'}}
-          <span class="input">
-            <p ng-repeat="restriction in application.diet.possible" ng-click="application.diet.toggleSelection(restriction)" ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}" class="item">
-              {{restriction}}
-            </p>
-            <label>Dietary Restrictions <button type="button"><i class="fa fa-arrow-right"></i></button></label>
-          </span>
-        </span>
+        <a ng-click="open('dietary')">{{application.dietary | application:'dietary'}}</a>
+        <div class="input checkbox" ng-if="display.dietary">
+          <p ng-repeat="restriction in application.diet.possible"
+             ng-click="application.diet.toggleSelection(restriction)"
+             ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}"
+             class="item"> {{restriction}} </p>
+          <label>Dietary restrictions</label>
+          <button ng-click="closeAll()"></button>
+        </div>
+        .
       </article>
       <footer>
         <div class="agreements">
@@ -133,68 +124,6 @@
   <script>
 
   jQuery(document).ready(function ($) {
-    var form = $('#application form');
-    var texts = $('#application .text');
-    var selects = $('#application .select');
-    var checkboxes = $('#application .checkbox');
-    var blinds = $('#application .blinds');
-
-    // Hide all form inputs
-    var hidden = false;
-    function hideAll() {
-      texts.children('.input').hide();
-      selects.children('.input').hide();
-      checkboxes.children('.input').hide();
-      blinds.hide();
-      hidden = true;
-    }
-    hideAll();
-
-    $(window).keypress(function (event) {
-      if (event.keyCode == 13) {
-        if (!hidden) {
-          event.preventDefault();
-          hideAll();
-        }
-      }
-    });
-
-    $('button[type="button"]').click(hideAll);
-    $('button[type="button"]').focus(hideAll);
-
-    // Show text inputs on click
-    texts.click(function () {
-      hidden = false;
-      blinds.show();
-      $(this)
-        .children('.input')
-        .show()
-        .children('input')
-        .focus()
-        .select()
-        .blur(hideAll);
-    });
-
-    // Show selects on click
-    selects.click(function () {
-      hidden = false;
-      blinds.show();
-      $(this)
-        .children('.input')
-        .show()
-        .children('select')
-        .focus()
-        .blur(hideAll);
-    });
-
-    // Show checkboxes on click
-    checkboxes.click(function () {
-      hidden = false;
-      blinds.show();
-      $(this).children('.input').show();
-      blinds.click(hideAll);
-      $(this).find('button').focus(hideAll);
-    });
 
   });
 

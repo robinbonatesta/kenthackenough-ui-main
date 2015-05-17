@@ -20,7 +20,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  display: none;
 }
 
 #application *:focus {
@@ -72,14 +71,14 @@
   padding: 1rem 0 1rem 0;
 }
 
-#application article span {
+#application article a {
   color: red;
   border-bottom: 1px dashed red;
   padding-bottom: 0.2rem;
   cursor: pointer;
 }
 
-#application article span.no-input {
+#application article a.no-input {
   color: white;
   border: none;
   padding: 0;
@@ -104,7 +103,7 @@
   z-index: 10;
   background-color: red;
   color: white;
-  font-family: 'Droid-Serif';
+  font-family: 'Droid Serif';
   border: none;
   position: absolute;
   top: 10rem;
@@ -128,17 +127,19 @@
   height: 1.8rem;
 }
 
-#application article label button {
+#application article button {
   z-index: 10;
   position: absolute;
   background: #CC0000;
-  top: -3.05rem;
+  top: 10rem;
   height: 4.81rem;
   width: 22vw;
-  right: 0;
+  right: 5vw;
 }
 
-#application article label button i {
+#application article button::after {
+  content: '\f061';
+  font-family: 'FontAwesome';
   color: white;
   font-size: 2rem;
 }
@@ -151,7 +152,7 @@
   font-size: 1rem;
 }
 
-#application article .checkbox .input {
+#application article .checkbox {
   z-index: 10;
   background: red;
   position: absolute;
@@ -193,13 +194,15 @@
   padding-top: 0.5rem;
 }
 
-#application article .checkbox label button {
+#application article .checkbox button {
   height: 2.5rem;
-  top: -1px;
+  top: 10rem;
+  margin-top: 2.8rem;
+  right: 0;
   padding: 0;
 }
 
-#application article .checkbox label button i {
+#application article .checkbox button::after {
   font-size: 1rem;
 }
 
