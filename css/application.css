@@ -143,6 +143,11 @@
   color: white;
 }
 
+#application article .input {
+  position: absolute;
+  top: 2.5rem;
+}
+
 #application article .text input,
 #application article .select select {
   z-index: 10;
@@ -152,7 +157,6 @@
   border: none;
   position: absolute;
   top: 5rem;
-  left: 5vw;
   font-size: 1.75rem;
   height: 3rem;
   width: 68vw;
@@ -179,7 +183,8 @@
   top: 5rem;
   height: 4.81rem;
   width: 22vw;
-  right: 5vw;
+  left: 0;
+  margin-left: 68vw;
 }
 
 #application article button::after {
@@ -340,4 +345,114 @@
   width: 20vw;
   margin: auto;
   margin-top: 1rem;
+}
+
+@media (min-width: 960px) {
+
+  #application header h1 {
+    font-size: 2.5rem;
+  }
+
+  #application header {
+    height: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  #application article .input {
+    top: 6rem;
+  }
+
+  #application article {
+    margin-top: 1rem;
+    width: 960px;
+    font-size: 2.25rem;
+  }
+
+  #application article .small {
+    font-size: 1.5rem;
+  }
+
+  #application article.tall {
+    line-height: 2;
+  }
+
+  #application article.short {
+    line-height: 1;
+  }
+
+  #application article .text {
+    width: 960px;
+  }
+
+  #application article .text input {
+    left: auto;
+    width: 760px;
+  }
+
+  #application article .text label {
+    width: 760px;
+  }
+
+  #application article .text button {
+    width: 200px;
+    margin-left: 760px;
+    right: auto;
+  }
+
+  #application article .select {
+    width: 960px;
+  }
+
+  #application article .select select {
+    left: auto;
+    width: 760px;
+  }
+
+  #application article .select label {
+    width: 760px;
+  }
+
+  #application article .select button {
+    width: 200px;
+    margin-left: 760px;
+    right: auto;
+  }
+
+  #application article .checkbox {
+    position: absolute;
+    top: 5rem;
+    left: auto;
+    width: 960px;
+  }
+
+  #application article .checkbox label {
+    width: 960px;
+  }
+
+  #application article .agreements {
+    width: 960px;
+  }
+
+  #application article .agreements label {
+    font-size: 1.5rem;
+    width: 960px;
+  }
+
+  #application footer {
+    width: 960px;
+    margin-top: 2rem;
+  }
+
+  #application footer button {
+    width: 960px;
+  }
+
+  #application footer button span {
+    width: 200px;
+  }
+
+  #application footer button span i {
+    margin-left: -2.5rem;
+  }
+
 }
