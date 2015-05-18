@@ -1,0 +1,26 @@
+<header>
+  <h1>Apply to Kent Hack Enough</h1>
+</header>
+<div class="page-indicator">
+  <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle"></i>
+</div>
+<article class="short">
+  <div class="agreements">
+    <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
+    <label for="cb-conduct">I agree to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></label>
+    <input id="cb-waiver" type="checkbox" ng-model="application.waiver">
+    <label for="cb-waiver">I agree to the event waiver</label>
+    <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
+    <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
+  </div>
+</article>
+<footer>
+  <div data-alert class="alert-box alert" ng-if="application.errors">
+    <ul>
+      <li ng-repeat="e in application.errors">{{e}}</li>
+    </ul>
+  </div>
+  <button><span><i class="fa fa-check"></i></span> Apply</button>
+</footer>
