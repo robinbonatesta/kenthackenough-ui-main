@@ -35,6 +35,7 @@
 #application .page-indicator i {
   color: white;
   font-size: 0.5rem;
+  cursor: pointer;
 }
 
 #application form {
@@ -99,9 +100,16 @@
   width: 90vw;
   margin: auto;
   font-size: 1.75rem;
-  line-height: 3rem;
   color: white;
   padding: 1rem 0 1rem 0;
+}
+
+#application article.tall {
+  line-height: 3rem;
+}
+
+#application article.short {
+  line-height: 1.5rem;
 }
 
 #application article a {
@@ -116,6 +124,10 @@
   border: none;
   padding: 0;
   cursor: text;
+}
+
+#application article a.small {
+  line-height: -1rem;
 }
 
 #application .alert-box {
@@ -284,6 +296,21 @@
   margin-right: 0.4rem;
 }
 
+#application #resume-upload {
+  background-color: white;
+  width: 90;
+  border: 1px dashed red;
+  text-align: center;
+  font-size: 1rem;
+  padding: 3rem;
+  color: #C0C0C0;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+#application #resume-upload .dz-message {
+  color: #C0C0C0;
+}
+
 #application footer {
   width: 90vw;
   margin: auto;
@@ -302,7 +329,7 @@
   position: absolute;
   left: 0;
   background: rgba(0, 0, 0, 0.2);
-  width: 15vw;
+  width: 20vw;
   height: 4rem;
   top: 0;
 }
@@ -310,7 +337,7 @@
 #application footer button span i {
   color: white;
   font-size: 2rem;
-  width: 15vw;
+  width: 20vw;
   margin: auto;
   margin-top: 1rem;
 }

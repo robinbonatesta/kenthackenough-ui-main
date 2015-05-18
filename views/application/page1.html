@@ -2,10 +2,11 @@
   <h1>Apply to Kent Hack Enough</h1>
 </header>
 <div class="page-indicator">
-  <i class="fa fa-circle"></i>
-  <i class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page1" class="fa fa-circle"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle-o"></i>
 </div>
-<article>
+<article class="tall">
   I am
   <a ng-click="open('name')">{{application.name | application:'name'}}</a>,
   <div class="input text" ng-if="display.name">

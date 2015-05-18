@@ -39,6 +39,8 @@ angular
           return 'large';
         case 'XL':
           return 'extra large';
+        default:
+          return '[shirt]';
       }
     };
 
@@ -66,6 +68,11 @@ angular
         return diet;
       }
       return 'None';
+    };
+
+    self.link = function (link) {
+      if (link) return link;
+      return '[link]';
     };
 
     return function (input, fn) {

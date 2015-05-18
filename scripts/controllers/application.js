@@ -16,6 +16,10 @@ angular
         .state('apply.page2', {
           url: '/2',
           templateUrl: '/views/application/page2.html'
+        })
+        .state('apply.page3', {
+          url: '/3',
+          templateUrl: '/views/application/page3.html'
         });
   }])
   .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {
@@ -114,7 +118,9 @@ angular
         major: self.major,
         conduct: self.conduct,
         travel: self.travel,
-        waiver: self.waiver
+        waiver: self.waiver,
+        resume: self.resume,
+        link: self.link
       };
       if (restrictions) {
         angular.extend(app, {dietary: restrictions});
