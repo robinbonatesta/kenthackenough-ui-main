@@ -43,7 +43,8 @@ var bowerJs = [
   './bower_components/moment/min/moment.min.js',
   './bower_components/marked/marked.min.js',
   './bower_components/snap.svg/dist/snap.svg-min.js',
-  './bower_components/wow.js/dist/wow.min.js'
+  './bower_components/wow.js/dist/wow.min.js',
+  './bower_components/dropzone/dist/min/dropzone.min.js'
 
 ];
 
@@ -54,7 +55,8 @@ var bowerCss = [
 
   './bower_components/foundation/css/foundation.css',
   './bower_components/font-awesome/css/font-awesome.css',
-  './bower_components/animate.css/animate.min.css'
+  './bower_components/animate.css/animate.min.css',
+  './bower_components/dropzone/dist/min/dropzone.min.css'
 
 ];
 

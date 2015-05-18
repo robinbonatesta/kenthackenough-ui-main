@@ -25,7 +25,8 @@
     "animate.css": "3.2.x",
     "wow.js": "1.1.x",
     "angular-ui-router": "0.2.x",
-    "angular-animate": "1.3.x"
+    "angular-animate": "1.3.x",
+    "dropzone": "4.0.x"
   },
   "resolutions": {
     "angular": "1.3.x"

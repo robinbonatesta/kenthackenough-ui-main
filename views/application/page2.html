@@ -2,10 +2,11 @@
   <h1>Apply to Kent Hack Enough</h1>
 </header>
 <div class="page-indicator">
-  <i class="fa fa-circle-o"></i>
-  <i class="fa fa-circle"></i>
+  <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle-o"></i>
 </div>
-<article>
+<article class="short">
   <span class="small white">Dietary restrictions:</span>
   <a ng-click="open('dietary')" class="small">{{application.dietary | application:'dietary'}}</a>
   <div class="input checkbox" ng-if="display.dietary">
@@ -16,14 +17,23 @@
     <label>Dietary restrictions</label>
     <button ng-click="closeAll()"></button>
   </div>
-  <div class="agreements">
-    <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
-    <label for="cb-conduct">I agree to the MLH Code of Conduct</label>
-    <input id="cb-waiver" type="checkbox" ng-model="application.waiver">
-    <label for="cb-waiver">I agree to the event waiver</label>
-    <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
-    <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
+  <br><br>
+  <span ng-if="application.resume" class="small white"><i class="fa fa-check white"></i> Resume uploaded. Upload a new one to replace it (optional):</span>
+  <span class="small white" ng-if="!application.resume">Upload your resume (optional):</span>
+  <div id="resume-upload" class="dropzone">
+    <div class="dz-message">Drop files here or click to upload</div>
   </div>
+  <input type="text" ng-model="application.resume" id="resume-filename" style="display:none;">
+  <br>
+
+  <span class="white small">GitHub/LinkedIn/Personal Website link (optional):</span>
+  <a ng-click="open('link')" class="small">{{application.link | application:'link'}}</a>
+  <div class="input text" ng-if="display.link">
+    <input type="text" placeholder="github.com/username" ng-model="application.link">
+    <label>A link to something you've done</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <br><br>
 </article>
 <footer>
   <div data-alert class="alert-box alert" ng-if="application.errors">
@@ -31,5 +41,22 @@
       <li ng-repeat="e in application.errors">{{e}}</li>
     </ul>
   </div>
-  <button><span><i class="fa fa-arrow-right"></i></span> Apply</button>
+  <button ui-sref="apply.page3"><span><i class="fa fa-arrow-right"></i></span> Next</button>
 </footer>
+
+<script>
+  jQuery(document).ready(function ($) {
+    var resume = new Dropzone('div#resume-upload', {
+      url: config.api + '/users/application/resume',
+      maxFiles: 1,
+      acceptedFiles: 'application/pdf,.pdf,.doc,.docx',
+      addRemoveLinks: false,
+      uploadMultiple: false,
+      createImageThumbnails: true,
+      paramName: 'resume',
+      success: function (file, response) {
+        $('#resume-filename').val(response.filename).trigger('input');
+      }
+    });
+  });
+</script>
