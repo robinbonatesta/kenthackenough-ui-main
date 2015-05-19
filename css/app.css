@@ -32,6 +32,10 @@ button:focus {
   background-color: #E70000;
 }
 
+button.postfix:focus {
+  background-color: #E70000;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -173,6 +177,96 @@ fieldset legend {
 
 #updates {
   margin-top: 2rem;
+}
+
+#login {
+  background: red;
+  width: 90vw;
+  z-index: 10;
+  position: absolute;
+  top: 10rem;
+  left: 5vw;
+  padding: 1rem 0.75rem 0rem 0.75rem;
+}
+
+#login h2 {
+  text-transform: uppercase;
+  color: white;
+}
+
+#login label {
+  color: white;
+}
+
+#login input {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: none;
+  color: white;
+}
+
+#login button {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+}
+
+#login button span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.9rem;
+}
+
+#login button span i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  #login {
+    width: 700px;
+    margin: auto;
+    left: 50%;
+    margin-left: -350px;
+  }
+
+  #login button span {
+    width: 100px;
+  }
+}
+
+#login *:focus {
+  outline: 0;
+}
+
+#login input::selection {
+  background: #404040;
+}
+
+#login::-moz-selection {
+  background: #404040;
+}
+
+#login *::-webkit-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *:-moz-placeholder { /* Firefox 18- */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *:-ms-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
 }
 
 .dark-section {

@@ -1,3 +1,5 @@
+<div class="blinds" ng-if="home.loginRegister" ng-click="home.loginRegister = false"></div>
+
 <div id="splash">
 
   <parallax-background></parallax-background>
@@ -25,8 +27,8 @@
   <div class="row" id="updates">
     <div class="small-12 large-4 large-offset-4 columns">
       <p class="align-center">Get updates about KHE:</p>
-      <p ng-repeat="message in home.mail.successes">{{message}}</p>
-      <p ng-repeat="message in home.mail.errors">{{message}}</p>
+      <p class="align-center" ng-repeat="message in home.mail.successes">{{message}}</p>
+      <p class="align-center" ng-repeat="message in home.mail.errors">{{message}}</p>
       <form ng-if="!home.mail.successes" ng-submit="home.mail.add()">
         <div class="row collapse">
           <div class="small-10 columns">
@@ -37,6 +39,36 @@
           </div>
         </div>
       </form>
+      <button ng-if="home.mail.email == 'secret'" ng-click="home.loginRegister = true">Login</button>
+    </div>
+  </div>
+
+  <div id="login" ng-if="home.loginRegister">
+    <div class="row">
+      <div class="small-12 columns" ng-if="!home.showLogin">
+        <h2>Sign Up</h2>
+        <form ng-submit="home.person.register()">
+          <label>
+            Email
+            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
+          </label>
+          <label>
+            Password
+            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+          </label>
+          <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
+          <a ng-click="home.showLogin = true">Already signed up?</a>
+        </form>
+      </div>
+      <div class="small-12 columns" ng-if="home.showLogin">
+        <h2>Login</h2>
+        <form ng-submit="home.person.login()">
+          <input type="email" ng-model="home.person.email" placeholder="Email">
+          <input type="password" ng-model="home.person.password" placeholder="Password">
+          <button>Login</button>
+          <a ng-click="home.showLogin = false">Create an account</a>
+        </form>
+      </div>
     </div>
   </div>
 </div>
