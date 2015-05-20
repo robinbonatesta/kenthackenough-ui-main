@@ -37,9 +37,9 @@
           </div>
         </div>
       </form>
-      <button ng-if="!home.user" class="apply" ng-click="home.loginRegister = true">Apply</button>
-      <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
-      <div class="align-center"><a ng-if="home.user" ng-click="home.person.logout()">Logout</a></div>
+      <button ng-if="home.mail.email == 'supersecret' && !home.user" class="apply" ng-click="home.loginRegister = true">Apply</button>
+      <button ng-if="home.mail.email == 'supersecret' && home.user" class="apply" ui-sref="apply.page1">Your Application</button>
+      <div class="align-center"><a ng-if="home.mail.email == 'supersecret' && home.user" ng-click="home.person.logout()" class="white">Logout</a></div>
     </div>
   </div>
 
