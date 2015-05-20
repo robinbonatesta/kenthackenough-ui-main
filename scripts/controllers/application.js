@@ -105,10 +105,11 @@ angular
       }
 
       // build the application object
+      var phone = (self.phone) ? self.phone.replace(/\D/g,'') : '';
       var app = {
         name: self.name,
         school: self.school,
-        phone: self.phone.replace(/\D/g,''),
+        phone: phone,
         shirt: self.shirt,
         demographic: self.demographic,
         first: self.first,
