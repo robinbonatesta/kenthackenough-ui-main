@@ -65,6 +65,7 @@
       <div class="small-12 columns" ng-if="home.showLogin">
         <h2>Login</h2>
         <a ng-click="home.showLogin = false" class="switch">Create an account</a>
+        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
         <form ng-submit="home.person.login()">
           <label>
             Email
