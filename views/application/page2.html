@@ -8,7 +8,7 @@
 </div>
 <article class="short">
   <span class="small white">Dietary restrictions:</span>
-  <a ng-click="open('dietary')" class="small">{{application.dietary | application:'dietary'}}</a>
+  <a ng-click="open('dietary')" class="small">{{application.diet.selected | application:'dietary'}}</a>
   <div class="input checkbox" ng-if="display.dietary">
     <p ng-repeat="restriction in application.diet.possible"
        ng-click="application.diet.toggleSelection(restriction)"

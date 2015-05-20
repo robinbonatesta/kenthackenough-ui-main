@@ -40,7 +40,7 @@ angular
         case 'XL':
           return 'extra large';
         default:
-          return '[shirt]';
+          return '[size]';
       }
     };
 
@@ -51,12 +51,13 @@ angular
 
     self.year = function (year) {
       if (year) return year;
-      return '[year]';
+      return '[class]';
     };
 
     self.first = function (first) {
-      if (first == true || first == 'true') return 'is';
-      return 'is not';
+      if (first === true || first == 'true') return 'is';
+      if (first === false || first == 'false') return 'is not';
+      return '[is/is not]';
     };
 
     self.dietary = function (restrictions) {
