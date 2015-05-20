@@ -37,8 +37,8 @@ angular
       register: function () {
         var self = this;
         Models.user.register({
-          email: view.email,
-          password: view.password
+          email: self.email,
+          password: self.password
         }).
         success(function (data) {
           self.errors = null;

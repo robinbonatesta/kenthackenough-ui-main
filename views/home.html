@@ -1,5 +1,3 @@
-<div class="blinds" ng-if="home.loginRegister" ng-click="home.loginRegister = false"></div>
-
 <div id="splash">
 
   <parallax-background></parallax-background>
@@ -39,14 +37,19 @@
           </div>
         </div>
       </form>
-      <button ng-if="home.mail.email == 'secret'" ng-click="home.loginRegister = true">Login</button>
+      <button ng-if="!home.user" class="apply" ng-click="home.loginRegister = true">Apply</button>
+      <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
+      <div class="align-center"><a ng-if="home.user" ng-click="home.person.logout()">Logout</a></div>
     </div>
   </div>
 
-  <div id="login" ng-if="home.loginRegister">
+  <div class="blinds" ng-if="home.loginRegister && !home.user" ng-click="home.loginRegister = false"></div>
+  <div id="login" ng-if="home.loginRegister && !home.user">
     <div class="row">
       <div class="small-12 columns" ng-if="!home.showLogin">
         <h2>Sign Up</h2>
+        <a ng-click="home.showLogin = true" class="switch">Already created an account?</a>
+        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
         <form ng-submit="home.person.register()">
           <label>
             Email
@@ -57,16 +60,21 @@
             <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
           </label>
           <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
-          <a ng-click="home.showLogin = true">Already signed up?</a>
         </form>
       </div>
       <div class="small-12 columns" ng-if="home.showLogin">
         <h2>Login</h2>
+        <a ng-click="home.showLogin = false" class="switch">Create an account</a>
         <form ng-submit="home.person.login()">
-          <input type="email" ng-model="home.person.email" placeholder="Email">
-          <input type="password" ng-model="home.person.password" placeholder="Password">
-          <button>Login</button>
-          <a ng-click="home.showLogin = false">Create an account</a>
+          <label>
+            Email
+            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
+          </label>
+          <label>
+            Password
+            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+          </label>
+          <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
         </form>
       </div>
     </div>
