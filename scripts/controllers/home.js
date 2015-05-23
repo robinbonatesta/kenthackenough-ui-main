@@ -6,11 +6,6 @@ angular
         url: '/',
         templateUrl: '/views/home.html',
         controller: 'HomeCtrl as home'
-      })
-      .state('login', {
-        url: '/login',
-        templateUrl: '/views/login.html',
-        controller: 'HomeCtrl as home'
       });
   }])
   .controller('HomeCtrl', ['User', 'News', 'Ticket', '$location', function (User, News, Ticket, $location) {
