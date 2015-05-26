@@ -18,6 +18,17 @@
     <button ng-click="closeAll()"></button>
   </div>
   <br><br>
+  <span class="small white">Will you require travel reimbursement?</span>
+  <a class="small" ng-click="open('travel')">{{application.travel | application:'travel'}}</a>
+  <div class="input select" ng-if="display.travel">
+    <select ng-model="application.travel">
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
+    <label>Travel reimbursement?</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <br><br>
   <span ng-if="application.resume" class="small white"><i class="fa fa-check white"></i> Resume uploaded. Upload a new one to replace it (optional):</span>
   <span class="small white" ng-if="!application.resume">Upload your resume (optional):</span>
   <div id="resume-upload" class="dropzone">

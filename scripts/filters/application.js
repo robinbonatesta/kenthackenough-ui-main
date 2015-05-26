@@ -76,6 +76,11 @@ angular
       return '[link]';
     };
 
+    self.travel = function (travel) {
+      if (travel === true || travel == 'true') return 'Yes';
+      return 'No';
+    };
+
     return function (input, fn) {
       return self[fn](input);
     };
