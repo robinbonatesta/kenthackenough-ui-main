@@ -47,7 +47,7 @@
 .blinds {
   background-color: black;
   opacity: 0.8;
-  z-index: 5;
+  z-index: 100;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -145,13 +145,13 @@
 
 #application article .input {
   position: fixed;
-  z-index: 10;
+  z-index: 200;
   top: 2.5rem;
 }
 
 #application article .text input,
 #application article .select select {
-  z-index: 10;
+  z-index: 200;
   background-color: red;
   color: white;
   font-family: 'Droid Serif';
@@ -168,7 +168,7 @@
   top: 5rem;
   color: #CC0000;
   font-size: 0.8rem;
-  z-index: 10;
+  z-index: 200;
   margin-top: 3rem;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   background-color: red;
@@ -178,7 +178,7 @@
 }
 
 #application article button {
-  z-index: 10;
+  z-index: 200;
   position: absolute;
   background: #CC0000;
   top: 5rem;
@@ -204,7 +204,7 @@
 }
 
 #application article .checkbox {
-  z-index: 10;
+  z-index: 200;
   background: red;
   position: absolute;
   top: 5rem;
