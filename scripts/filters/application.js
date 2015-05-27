@@ -60,6 +60,12 @@ angular
       return '[is/is not]';
     };
 
+    self.firstv2 = function (first) {
+      if (first === true || first == 'true') return 'Yes';
+      if (first === false || first == 'false') return 'No';
+      return '[yes/no]';
+    };
+
     self.dietary = function (restrictions) {
       if (restrictions && restrictions.length) {
         var diet = restrictions[0];

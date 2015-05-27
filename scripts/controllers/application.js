@@ -20,6 +20,10 @@ angular
         .state('apply.page3', {
           url: '/3',
           templateUrl: '/views/application/page3.html'
+        })
+        .state('apply.page4', {
+          url: '/4',
+          templateUrl: '/views/application/page4.html'
         });
   }])
   .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {

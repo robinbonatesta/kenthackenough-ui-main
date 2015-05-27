@@ -5,13 +5,13 @@
   <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
   <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
   <i ui-sref="apply.page3" class="fa fa-circle"></i>
+  <i ui-sref="apply.page4" class="fa fa-circle-o"></i>
 </div>
 <article class="short">
+  <h2 class="white">AGREEMENTS</h2>
   <div class="agreements">
     <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
     <label for="cb-conduct">I agree to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></label>
-    <input id="cb-waiver" type="checkbox" ng-model="application.waiver">
-    <label for="cb-waiver">I agree to the event waiver</label>
     <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
     <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
   </div>
@@ -22,9 +22,10 @@
       <li ng-repeat="e in application.errors">{{e}}</li>
     </ul>
     <br>
-    <a class="white large" ui-sref="apply.page1">Page 1</a> <span class="large">|</span>
-    <a class="white large" ui-sref="apply.page2">Page 2</a> <span class="large">|</span>
-    <a class="white large" ui-sref="apply.page3">Page 3</a>
+    <a class="white large" ui-sref="apply.page1">Basic Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page2">Additional Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page3">Agreements</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page4">Summary</a>
   </div>
-  <button><span><i class="fa fa-check"></i></span> Apply</button>
+  <button ui-sref="apply.page4"><span><i class="fa fa-arrow-right"></i></span> Next</button>
 </footer>
