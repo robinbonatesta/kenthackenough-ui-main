@@ -190,7 +190,7 @@ button.apply {
 #login {
   background: red;
   width: 90vw;
-  z-index: 10;
+  z-index: 200;
   position: absolute;
   top: 10rem;
   left: 5vw;
