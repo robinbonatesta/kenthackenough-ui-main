@@ -1,20 +1,6 @@
-<requirelogin user="application.me" error="true">
-
-  <div id="application">
-
-    <div class="blinds" ng-if="display.blinds" ng-click="closeAll()"></div>
-
-    <form ng-submit="application.submit()">
-      <div id="application-views" ui-view></div>
-    </form>
-  </div>
-
-  <script>
-
-  jQuery(document).ready(function ($) {
-
-  });
-
-  </script>
-
-</requirelogin>
+<div id="application">
+  <div class="blinds" ng-if="display.blinds" ng-click="closeAll()"></div>
+  <form ng-submit="application.submit()">
+    <div id="application-views" ui-view></div>
+  </form>
+</div>

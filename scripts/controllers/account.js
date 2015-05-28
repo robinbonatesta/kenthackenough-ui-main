@@ -18,6 +18,15 @@ angular
 
     view.user = Models.user.getMe();
 
+    Models.user.get(view.user.key).
+    success(function (data) {
+      view.originalUser = data;
+      view.person.email = data.email;
+    }).
+    error(function (data) {
+      view.errors = data.errors;
+    });
+
     view.person = {
 
       email: null,
