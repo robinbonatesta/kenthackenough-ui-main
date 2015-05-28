@@ -201,11 +201,19 @@ button.apply {
   position: absolute;
   top: 1.8rem;
   right: 1rem;
-  text-decoration: underline;
 }
 
 #login .switch {
   color: white;
+}
+
+@media (max-width: 640px) {
+  #login .switch a {
+    font-size: 0.7rem;
+  }
+  #login .switch {
+    top: 1rem;
+  }
 }
 
 #login h2 {

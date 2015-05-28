@@ -251,6 +251,21 @@ angular
         return $http(req);
       };
 
+      /**
+      * Recover a password
+      * @param email An email address
+      */
+      this.recover = function (email) {
+        var req = {
+          method: 'POST',
+          url: config.api + '/users/reset',
+          data: {
+            email: email
+          }
+        };
+        return $http(req);
+      };
+
     };
 
     return User;

@@ -4,7 +4,12 @@ angular
     $state
       .state('account', {
         url: '/account',
-        templateUrl: '/views/account.html',
+        templateUrl: '/views/account/edit.html',
+        controller: 'AccountCtrl as acc'
+      })
+      .state('recover', {
+        url: '/recover',
+        templateUrl: '/views/account/recover.html',
         controller: 'AccountCtrl as acc'
       });
   }])
@@ -18,14 +23,16 @@ angular
 
     view.user = Models.user.getMe();
 
-    Models.user.get(view.user.key).
-    success(function (data) {
-      view.originalUser = data;
-      view.person.email = data.email;
-    }).
-    error(function (data) {
-      view.errors = data.errors;
-    });
+    if (view.user) {
+      Models.user.get(view.user.key).
+      success(function (data) {
+        view.originalUser = data;
+        view.person.email = data.email;
+      }).
+      error(function (data) {
+        view.errors = data.errors;
+      });
+    }
 
     view.person = {
 
@@ -62,6 +69,29 @@ angular
       logout: function () {
         Models.user.removeMe();
         view.user = Models.user.getMe();
+      }
+
+    };
+
+    view.recover = {
+
+      email: null,
+
+      errors: null,
+      successes: null,
+
+      submit: function () {
+        var self = this;
+        Models.user.recover(self.email).
+        success(function (data) {
+          self.email = null;
+          self.successes = ['Your password has been reset. You should be receiving an email with a temporary password soon.'];
+        }).
+        error(function (data) {
+          self.email = null;
+          self.successes = null;
+          self.errors = data.errors;
+        });
       }
 
     };
