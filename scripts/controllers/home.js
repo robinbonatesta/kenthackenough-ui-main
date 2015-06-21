@@ -8,17 +8,30 @@ angular
         controller: 'HomeCtrl as home'
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', '$location', function (User, News, Ticket, $location) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', '$location', function (User, News, Ticket, Application, $location) {
 
     var view = this;
 
     var Models = {
       user: new User(),
       news: new News(),
-      ticket: new Ticket()
+      ticket: new Ticket(),
+      application: new Application()
     };
 
     view.user = Models.user.getMe();
+
+    /**
+    * Allow for RSVP if the user has already submitted an application.
+    */
+    Models.application.get().
+    success(function (data) {
+      if (data.application) {
+        view.application = data.application;
+      }
+    }).
+    error(function (data) {
+    });
 
     view.person = {
 
@@ -76,6 +89,21 @@ angular
       logout: function () {
         Models.user.removeMe();
         view.user = Models.user.getMe();
+      }
+
+    };
+
+    view.apply = {
+
+      toggleGoing: function () {
+        view.application.going = (view.application.going) ? false : true;
+        Models.application.update(view.application).
+        success(function (data) {
+          view.application = data.application;
+        }).
+        error(function (data) {
+          view.errors = data.errors;
+        });
       }
 
     };

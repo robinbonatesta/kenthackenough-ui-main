@@ -87,6 +87,14 @@ angular
       return 'No';
     };
 
+    self.going = function (going) {
+      if (going === true) {
+        return 'Going';
+      } else {
+        return 'Not Going';
+      }
+    };
+
     return function (input, fn) {
       return self[fn](input);
     };

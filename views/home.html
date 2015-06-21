@@ -41,6 +41,7 @@
       <!-- /Pre-register -->
       <button ng-if="!home.user" class="apply" ng-click="home.loginRegister = true">Apply</button>
       <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
+      <button ng-if="home.user && home.application.status == 'approved'" class="apply" ng-click="home.apply.toggleGoing()">RSVP: {{home.application.going | application:'going'}}</button>
       <div ng-if="home.user" class="align-center">
         <a href="/account" class="white">Change Email/Password</a> |
         <a ng-click="home.person.logout()" class="white">Logout</a>
