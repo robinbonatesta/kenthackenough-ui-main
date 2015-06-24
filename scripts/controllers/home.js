@@ -45,6 +45,7 @@ angular
       * Register a new user
       */
       register: function () {
+        console.log('Register function ran');
         var self = this;
         Models.user.register({
           email: self.email,
