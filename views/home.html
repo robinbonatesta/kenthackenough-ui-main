@@ -39,6 +39,7 @@
         </div>
       </form>-->
       <!-- /Pre-register -->
+      <div class="white small" ng-repeat="e in home.errors">{{e}}</div>
       <button ng-if="!home.user" class="apply" ng-click="home.loginRegister = true">Apply</button>
       <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
       <button ng-if="home.user && home.application.status == 'approved'" class="apply" ng-click="home.apply.toggleGoing()">RSVP: {{home.application.going | application:'going'}}</button>

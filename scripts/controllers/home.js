@@ -24,14 +24,16 @@ angular
     /**
     * Allow for RSVP if the user has already submitted an application.
     */
-    Models.application.get().
-    success(function (data) {
-      if (data.application) {
-        view.application = data.application;
-      }
-    }).
-    error(function (data) {
-    });
+    if (view.user) {
+      Models.application.get().
+      success(function (data) {
+        if (data.application) {
+          view.application = data.application;
+        }
+      }).
+      error(function (data) {
+      });
+    }
 
     view.person = {
 
