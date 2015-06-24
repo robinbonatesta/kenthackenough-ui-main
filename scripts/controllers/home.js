@@ -56,9 +56,15 @@ angular
           self.password = '';
           Models.user.setMe(data);
           view.user = Models.user.getMe();
+          console.log('Register successful');
+          console.log(data);
+          console.log('about to change location');
           $location.path('/apply');
+          console.log('after change location');
         }).
         error(function (data) {
+          console.log('Register error');
+          console.log(data);
           if (data) {
             self.errors = data.errors || ['An internal error has occurred'];
           }
