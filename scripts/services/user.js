@@ -122,13 +122,15 @@ angular
       this.authorize = function (req) {
         refreshToken();
         var me = this.getMe();
-        var encoded = $filter('base64Encode')(me.key + ':' + me.token);
-        var ext = {
-          headers: {
-            'Authorization': 'Basic ' + encoded
-          }
-        };
-        angular.extend(req, ext);
+        if (me) {
+          var encoded = $filter('base64Encode')(me.key + ':' + me.token);
+          var ext = {
+            headers: {
+              'Authorization': 'Basic ' + encoded
+            }
+          };
+          angular.extend(req, ext);
+        }
         return req;
       };
 
