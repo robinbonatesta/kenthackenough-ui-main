@@ -11,7 +11,6 @@
   "dependencies": {
     "angular": "1.3.x",
     "angular-cookies": "1.3.x",
-    "angular-route": "1.3.x",
     "angular-socket-io": "0.7.x",
     "fastclick": "1.0.x",
     "font-awesome": "4.3.x",
@@ -21,8 +20,13 @@
     "modernizr": "2.8.x",
     "moment": "2.9.x",
     "underscore": "1.8.x",
-    "parallax": "2.1.x",
-    "socket.io-client": "1.3.x"
+    "socket.io-client": "1.3.x",
+    "snap.svg": "0.4.x",
+    "animate.css": "3.2.x",
+    "wow.js": "1.1.x",
+    "angular-ui-router": "0.2.x",
+    "angular-animate": "1.3.x",
+    "dropzone": "4.0.x"
   },
   "resolutions": {
     "angular": "1.3.x"

@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: #606060;
 }
 
 @font-face{
@@ -22,7 +22,7 @@ h1, h2, h3 {
   color: black;
 }
 
-a {
+a, a:active, a:focus {
   color: red;
 }
 
@@ -32,9 +32,18 @@ a:hover {
 
 button, .button {
   background-color: red;
+  font-family: 'Droid Serif';
 }
 
 button:hover, .button:hover {
+  background-color: #E70000;
+}
+
+button:focus {
+  background-color: #E70000;
+}
+
+button.postfix:focus {
   background-color: #E70000;
 }
 
@@ -58,6 +67,10 @@ button:hover, .button:hover {
   color: black;
 }
 
+.white {
+  color: white;
+}
+
 a.black {
   text-decoration: underline;
   color: black;
@@ -65,6 +78,15 @@ a.black {
 
 a.black:hover {
   color: #757575;
+}
+
+a.white {
+  text-decoration: underline;
+  color: white;
+}
+
+a.white:hover {
+  color: #EDEDED;
 }
 
 .float-right {
@@ -91,6 +113,10 @@ a.black:hover {
   cursor: pointer;
 }
 
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .underline {
   text-decoration: underline;
 }
@@ -111,40 +137,285 @@ fieldset legend {
   height: 2rem;
 }
 
-.container {
-  text-align: center;
-  position: fixed;
-  margin: -20px -40px;
+#splash {
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+  margin-top: -32px;
+}
+
+#layer1, #layer2 {
+  z-index: -10;
+  position: absolute;
   top: 0;
   left: 0;
-  vertical-align: middle;
-}
-
-#layer2, #layer1 {
-  height: 110vh;
-  width: 110vw;
-}
-
-.content {
+  height: 100vh;
   width: 100vw;
-  margin-left: 20px;
-  margin-top: 30vh;
+}
+
+#card {
+  margin-left: -30px;
+}
+
+@media (max-width: 1360px) {
+  .wow {
+    display: none;
+  }
 }
 
 #icons {
-  height: 5.5rem;
-  margin-bottom: 10px;
+  margin-top: 2rem;
+}
+
+#icons img {
+  max-height: 6rem;
+}
+
+#logo {
+  margin-top: 0.5rem;
+}
+
+#logo img {
+  height: 5rem;
+}
+
+#date {
+  margin-top: 0rem;
 }
 
 #date h2 {
-  font-size: 2.1rem;
+  font-size: 1.2rem;
 }
 
-#contact h4 {
-  margin-top: -10px;
-  font-size: 1.47rem;
+#updates {
+  margin-top: 2rem;
 }
 
-#updates form {
-  margin-top: -10px;
+button.apply {
+  width: 100%;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+#login {
+  background: red;
+  width: 90vw;
+  z-index: 200;
+  position: absolute;
+  top: 10rem;
+  left: 5vw;
+  padding: 1rem 0.75rem 0rem 0.75rem;
+}
+
+#login .switch {
+  position: absolute;
+  top: 1.8rem;
+  right: 1rem;
+}
+
+#login .switch {
+  color: white;
+}
+
+@media (max-width: 640px) {
+  #login .switch a {
+    font-size: 0.7rem;
+  }
+  #login .switch {
+    top: 1rem;
+  }
+}
+
+#login h2 {
+  text-transform: uppercase;
+  color: white;
+}
+
+#login label {
+  color: white;
+}
+
+#login input {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: none;
+  color: white;
+}
+
+#login button {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+}
+
+#login button span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.9rem;
+}
+
+#login button span i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  #login {
+    width: 700px;
+    margin: auto;
+    left: 50%;
+    margin-left: -350px;
+  }
+
+  #login button span {
+    width: 100px;
+  }
+}
+
+#login *:focus {
+  outline: 0;
+}
+
+#login input::selection {
+  background: #404040;
+}
+
+#login::-moz-selection {
+  background: #404040;
+}
+
+#login *::-webkit-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *:-moz-placeholder { /* Firefox 18- */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(0, 0, 0, 0.3);
+}
+
+#login *:-ms-input-placeholder {
+   color: rgba(0, 0, 0, 0.3);
+}
+
+.dark-section {
+  background-color: #231F20;
+  color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  margin-top: -2px
+}
+
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6,
+.dark-section p,
+.dark-section label {
+  color: white;
+}
+
+.light-section {
+  background-color: #FAFAFA;
+  color: #231F20;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  margin-top: -2px;
+}
+
+.light-section h1,
+.light-section h2,
+.light-section h3,
+.light-section h4,
+.light-section h5,
+.light-section h6,
+.light-section p {
+  color: #231F20;
+}
+
+#mlh-trust-badge {
+  visibility: hidden;
+}
+
+footer#site-footer {
+  text-align: center;
+  background-color: #FAFAFA;
+  height: 7rem;
+  overflow: hidden;
+}
+
+footer#site-footer * {
+  float: left;
+  height: 4rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+footer#site-footer #hacksu-logo {
+  height: 5.5rem;
+}
+
+footer#site-footer p {
+  font-family: 'Oswald';
+  line-height: 4rem;
+}
+
+footer#site-footer .container {
+  width: 340px;
+  margin: auto;
+  float: none;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  #date h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  #logo {
+    margin-top: 1.5rem;
+  }
+
+  #date {
+    margin-top: 1rem;
+  }
+
+  #date h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  #logo {
+    margin-top: 2rem;
+  }
+
+  #date {
+    margin-top: 1.5rem;
+  }
+
+  #date h2 {
+    font-size: 2.2rem;
+  }
+
+  #mlh-trust-badge {
+    visibility: visible;
+  }
 }

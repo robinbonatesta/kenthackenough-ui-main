@@ -1,0 +1,48 @@
+<div id="account">
+  <header>
+    <h1>KHE | Account Settings</h1>
+  </header>
+  <article>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="alert-box alert" ng-if="acc.person.errors">
+          <ul>
+            <li ng-repeat="e in acc.person.errors" class="white">{{e}}</li>
+          </ul>
+        </div>
+        <div class="alert-box success" ng-if="acc.person.successes">
+          <ul>
+            <li ng-repeat="e in acc.person.successes" class="white">{{e}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <form ng-submit="acc.person.update()">
+          <div class="row">
+            <div class="small-12 columns">
+              <label>
+                Email (Optional)
+                <input type="email" ng-model="acc.person.email" placeholder="you@example.edu">
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <label>
+                Password (Optional)
+                <input type="password" ng-model="acc.person.password" placeholder="password">
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <button>Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </article>
+</div>

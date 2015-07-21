@@ -1,13 +1,32 @@
 angular
   .module('khe')
-  .config(['$routeProvider', function ($router) {
-    $router
-      .when('/application', {
-        templateUrl: '/application.html',
-        controller: 'ApplicationCtrl'
-      });
+  .config(['$stateProvider', '$urlRouterProvider', function ($state, $url) {
+    $url.when('/apply', '/apply/1');
+    $url.when('/apply/', '/apply/1');
+    $state
+      .state('apply', {
+        url: '/apply',
+        templateUrl: '/views/application/application.html',
+        controller: 'ApplicationCtrl as application'
+      })
+        .state('apply.page1', {
+          url: '/1',
+          templateUrl: '/views/application/page1.html'
+        })
+        .state('apply.page2', {
+          url: '/2',
+          templateUrl: '/views/application/page2.html'
+        })
+        .state('apply.page3', {
+          url: '/3',
+          templateUrl: '/views/application/page3.html'
+        })
+        .state('apply.page4', {
+          url: '/4',
+          templateUrl: '/views/application/page4.html'
+        });
   }])
-  .controller('ApplicationCtrl', ['$location', '$filter', 'User', 'Application', function ($location, $filter, User, Application) {
+  .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {
 
     var self = this;
     var user = new User();
@@ -15,6 +34,20 @@ angular
 
     // Get the logged in user if it exists
     self.me = user.getMe();
+
+    /**
+    * Open and close form inputs
+    */
+    $scope.display = {};
+
+    $scope.open = function (field) {
+      $scope.display.blinds = true;
+      $scope.display[field] = true;
+    };
+
+    $scope.closeAll = function () {
+      $scope.display = {};
+    };
 
     /**
     * An object with an array of possible dietary restrictions,
@@ -46,17 +79,11 @@ angular
     */
     application.get().
     success(function (data) {
-      console.log(data);
       if (data.application) {
         angular.extend(self, data.application);
-        // translate a few things to populate the form
-        console.log(self.dietary);
-        self.name = self.name.split(' ');
-        self.name.first = self.name[0];
-        self.name.last = self.name[1];
         self.first = String(self.first);
         self.travel = String(self.travel);
-        self.diet.selected = self.dietary;
+        if (self.dietary) self.diet.selected = self.dietary;
         self.phone = $filter('formatPhone')(self.phone);
         self.submitted = true;
       } else {
@@ -82,10 +109,11 @@ angular
       }
 
       // build the application object
+      var phone = (self.phone) ? self.phone.replace(/\D/g,'') : '';
       var app = {
-        name: self.name.first + ' ' + self.name.last,
+        name: self.name,
         school: self.school,
-        phone: self.phone.replace(/\D/g,''),
+        phone: phone,
         shirt: self.shirt,
         demographic: self.demographic,
         first: self.first,
@@ -95,7 +123,9 @@ angular
         major: self.major,
         conduct: self.conduct,
         travel: self.travel,
-        waiver: self.waiver
+        waiver: self.waiver,
+        resume: self.resume,
+        link: self.link
       };
       if (restrictions) {
         angular.extend(app, {dietary: restrictions});

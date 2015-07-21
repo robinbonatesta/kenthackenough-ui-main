@@ -1,0 +1,26 @@
+#account {
+  width: 100vw;
+  height: 100vh;
+  background: #1C1C1C;
+}
+
+#account header {
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem;
+  height: 4.5rem;
+}
+
+#account header h1 {
+  color: white;
+  font-size: 1.5rem;
+}
+
+#account article {
+  margin-top: 1rem;
+}
+
+#account form label {
+  color: white;
+}

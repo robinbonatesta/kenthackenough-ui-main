@@ -1,74 +1,160 @@
 angular
   .module('khe')
-  .config(['$routeProvider', function ($router) {
-    $router.when('/', {
-      templateUrl: '/home.html',
-      controller: 'HomeCtrl as home'
-    });
+  .config(['$stateProvider', function ($state) {
+    $state
+      .state('home', {
+        url: '/',
+        templateUrl: '/views/home.html',
+        controller: 'HomeCtrl as home'
+      });
   }])
-  .controller('HomeCtrl', ['User', 'News', '$location', function (User, News, $location) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', '$location', function (User, News, Ticket, Application, $location) {
 
-    var self = this;
-    var user = new User();
-    var news = new News();
-    self.user = user.getMe();
+    var view = this;
 
-    // Register a user
-    self.register = function () {
-      user.register({
-        email: self.email,
-        password: self.password
-      }).
+    var Models = {
+      user: new User(),
+      news: new News(),
+      ticket: new Ticket(),
+      application: new Application()
+    };
+
+    view.user = Models.user.getMe();
+
+    /**
+    * Allow for RSVP if the user has already submitted an application.
+    */
+    if (view.user) {
+      Models.application.get().
       success(function (data) {
-        self.email = '';
-        self.password = '';
-        user.setMe(data);
-        self.user = user.getMe();
-        $location.path('/application');
-      }).
-      error(function (data) {
-        if (data) {
-          self.errors = data.errors || ['An internal error has occurred'];
+        if (data.application) {
+          view.application = data.application;
         }
-      });
-    };
-
-    // Login a user
-    self.login = function () {
-      user.login({
-        email: self.email,
-        password: self.password
-      }).
-      success(function (data) {
-        self.email = '';
-        self.password = '';
-        user.setMe(data);
-        self.user = user.getMe();
       }).
       error(function (data) {
-        self.errors = data.errors || ['An internal error has occurred'];
       });
+    }
+
+    view.person = {
+
+      email: null,
+      password: null,
+      errors: null,
+
+      /**
+      * Register a new user
+      */
+      register: function () {
+        var self = this;
+        Models.user.register({
+          email: self.email,
+          password: self.password
+        }).
+        success(function (data) {
+          self.errors = null;
+          self.email = '';
+          self.password = '';
+          Models.user.setMe(data);
+          view.user = Models.user.getMe();
+          console.log(data);
+          $location.path('/apply');
+        }).
+        error(function (data) {
+          if (data) {
+            self.errors = data.errors || ['An internal error has occurred'];
+          }
+        });
+      },
+
+      /**
+      * Login a user
+      */
+      login: function () {
+        var self = this;
+        Models.user.login({
+          email: self.email,
+          password: self.password
+        }).
+        success(function (data) {
+          self.email = null;
+          self.password = null;
+          Models.user.setMe(data);
+          view.user = Models.user.getMe();
+        }).
+        error(function (data) {
+          self.errors = data.errors || ['An internal error has occurred'];
+        });
+      },
+
+      /**
+      * Logout
+      */
+      logout: function () {
+        Models.user.removeMe();
+        view.user = Models.user.getMe();
+      }
+
     };
 
-    // Logout
-    self.logout = function () {
-      user.removeMe();
-      self.user = user.getMe();
+    view.apply = {
+
+      toggleGoing: function () {
+        view.application.going = (view.application.going) ? false : true;
+        Models.application.update(view.application).
+        success(function (data) {
+          view.application = data.application;
+        }).
+        error(function (data) {
+          view.errors = data.errors;
+        });
+      }
+
     };
 
-    // Add to a mailing list
-    self.mail = function () {
-      news.create(self.email).
-      success(function (data) {
-        self.error = false;
-        self.success = true;
-        self.email = null;
-      }).
-      error(function (data) {
-        self.error = true;
-        self.success = false;
-        self.email = null;
-      });
+    view.mail = {
+
+      email: null,
+      errors: null,
+      successes: null,
+
+      add: function () {
+        var self = this;
+        Models.news.create(self.email).
+        success(function (data) {
+          self.errors = null;
+          self.successes = ['Thanks, you\'ll be hearing from us soon!'];
+          self.email = null;
+        }).
+        error(function (data) {
+          self.errors = ['That email is already in use.'];
+          self.successes = null;
+          self.email = null;
+        });
+      }
+
+    };
+
+    view.contact = {
+
+      new: {},
+
+      successes: null,
+      errors: null,
+
+      submit: function () {
+        var self = this;
+        Models.ticket.create(self.new).
+        success(function (data) {
+          self.errors = null;
+          self.successes = ['Thank you, one of our organizers will reach out to you soon!'];
+          self.new = {};
+        }).
+        error(function (data) {
+          self.errors = data.errors;
+          self.successes = null;
+        });
+      }
+
     };
 
   }]);
