@@ -30,9 +30,7 @@
   student at
   <a ng-click="open('school')">{{application.school | application:'school'}}</a>
   <div class="input select" ng-if="display.school">
-    <select>
-      <school-options></school-options>
-    </select>
+    <school-select ng-model="application.school"></school-select>
     <label>Your school</label>
     <button ng-click="closeAll()"></button>
   </div>
