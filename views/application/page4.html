@@ -99,7 +99,8 @@
   </div>
 
   <div class="input text" ng-if="display.school">
-    <input type="text" placeholder="State University" ng-model="application.school">
+    <input type="text" placeholder="State University" ng-model="application.school" list="schools">
+    <school-datalist></school-datalist>
     <label>Your school</label>
     <button ng-click="closeAll()"></button>
   </div>
