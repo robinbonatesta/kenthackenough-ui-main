@@ -29,9 +29,10 @@
   </div>
   student at
   <a ng-click="open('school')">{{application.school | application:'school'}}</a>
-  <div class="input select" ng-if="display.school">
-    <school-select ng-model="application.school"></school-select>
-    <label>Your school</label>
+  <div class="input text" ng-if="display.school">
+    <input type="text" placeholder="State University" ng-model="application.school" list="school-datalist">
+    <school-datalist></school-datalist>
+    <label>Your school (choose from autocomplete)</label>
     <button ng-click="closeAll()"></button>
   </div>
   where I study
