@@ -341,14 +341,16 @@ button.apply {
   visibility: hidden;
 }
 
-.sponsors img{
+#sponsors img {
   margin:auto;
+  height: 75%;
+  width: 75%;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  margin-top: 2em;
 }
 
-.sponsors img:hover{
-  margin:auto;
+#sponsors img:hover {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
 }
