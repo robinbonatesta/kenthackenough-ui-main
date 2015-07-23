@@ -99,7 +99,7 @@
   </div>
 
   <div class="input text" ng-if="display.school">
-    <input type="text" placeholder="State University" ng-model="application.school" list="schools">
+    <input type="text" placeholder="State University" ng-model="application.school" list="school-datalist">
     <school-datalist></school-datalist>
     <label>Your school</label>
     <button ng-click="closeAll()"></button>
@@ -141,6 +141,7 @@
       <option value="Junior">Junior</option>
       <option value="Senior">Senior</option>
       <option value="High School">High Schooler</option>
+      <option value="Graduate Student">Graduate Student</option>
     </select>
     <label>Your year in school</label>
     <button ng-click="closeAll()"></button>
