@@ -250,7 +250,7 @@ angular
         this.messages = [];
         for (var i = 0; i < this.all.length; ++i) {
           this.messages.push(this.all[i]);
-          if (i == 3) break;
+          if (i == 2) break;
         }
       },
 
