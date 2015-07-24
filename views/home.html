@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<div class="light-section">
+<div class="light-section" ng-if="home.msg.messages.length">
   <div class="row">
     <div class="small-12 columns">
       <h2>UPDATES</h2>
@@ -137,7 +137,7 @@
   </div>
   <div class="row">
     <!-- Live feed -->
-    <div class="small-12 medium-6 columns">
+    <div class="small-12 medium-7 large-9 columns">
       <h3>
         LIVE FEED
         <span ng-if="!home.msg.enabled()" class="small">
@@ -155,9 +155,21 @@
       </ul>
     </div>
 
-    <!-- Twitter feed -->
-    <div class="small-12 medium-6 columns">
-      <h3>TWITTER</h3>
+    <!-- Social media links -->
+    <div class="small-12 medium-5 large-3 columns" id="social-media">
+      <h3>SOCIAL MEDIA</h3>
+      <div class="row">
+        <a href="https://twitter.com/@kenthackenough"><i class="fa fa-twitter fa-3x small-3 columns"></i></a>
+        <a href="https://www.facebook.com/kenthackenough"><i class="fa fa-facebook fa-3x small-3 columns"></i></a>
+        <a href="https://instagram.com/kenthackenough/"><i class="fa fa-instagram fa-3x small-3 columns"></i></a>
+        <a href="https://medium.com/the-diary-of-hacksu"><i class="fa fa-medium fa-3x small-3 columns"></i></a>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <br>
+          <p>Keep up with KHE on all of our social media channels. Tag us on Twitter <a href="https://twitter.com/@kenthackenough">@kenthackenough</a> if you have any questions!</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
