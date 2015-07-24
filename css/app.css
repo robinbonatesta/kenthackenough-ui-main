@@ -303,8 +303,8 @@ button.apply {
 .dark-section {
   background-color: #231F20;
   color: white;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
   margin-top: -2px
@@ -322,10 +322,10 @@ button.apply {
 }
 
 .light-section {
-  background-color: #FAFAFA;
+  background-color: #F5F5F5;
   color: #231F20;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
   margin-top: -2px;
@@ -361,8 +361,8 @@ button.apply {
 
 ul.messages {
   margin-left: 0;
-  background: white;
-  border: 1px solid #E8E8E8;
+  background: #FDFDFD;
+  border: 1px solid #E1E1E1;
 }
 
 li.message {
