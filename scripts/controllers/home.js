@@ -160,6 +160,9 @@ angular
 
     view.msg = {
 
+      showing: 'few',
+
+      all: [],
       messages: [],
 
       /**
@@ -169,7 +172,8 @@ angular
         var self = this;
         Models.message.list().
         success(function (data) {
-          self.messages = data.messages;
+          self.all = data.messages;
+          self.refresh();
         }).
         error(function (data) {
           self.errors = data.errors;
@@ -184,7 +188,8 @@ angular
 
         // Message created
         Models.message.socket().on('create', function (message) {
-          self.messages.push(message);
+          self.all.push(message);
+          self.refresh();
 
           // Show a notification
           var notification = new Notify('Kent Hack Enough', {
@@ -197,19 +202,21 @@ angular
 
         // Message updated
         Models.message.socket().on('update', function (message) {
-          self.messages = self.messages.map(function (m) {
+          self.all = self.all.map(function (m) {
             if (m._id == message._id) {
               m = message;
             }
             return m;
           });
+          self.refresh();
         });
 
         // Message deleted
         Models.message.socket().on('delete', function (message) {
-          self.messages = self.messages.filter(function (m) {
+          self.all = self.all.filter(function (m) {
             return m._id != message._id;
           });
+          self.refresh();
         });
       },
 
@@ -225,6 +232,42 @@ angular
       */
       enabled: function () {
         return !Notify.needsPermission;
+      },
+
+      /**
+      * Show all messages
+      */
+      showAll: function () {
+        this.showing = 'all';
+        this.messages = this.all;
+      },
+
+      /**
+      * Show a few messages
+      */
+      showFew: function () {
+        this.showing = 'few';
+        this.messages = [];
+        for (var i = 0; i < this.all.length; ++i) {
+          this.messages.push(this.all[i]);
+          if (i == 3) break;
+        }
+      },
+
+      /**
+      * Refresh the list of messages
+      */
+      refresh: function () {
+        // Sort by date
+        this.all = this.all.sort(function (a, b) {
+          if (a.created < b.created) return 1;
+          return -1;
+        });
+        if (this.showing == 'all') {
+          this.showAll();
+        } else if (this.showing == 'few') {
+          this.showFew();
+        }
       }
 
     };

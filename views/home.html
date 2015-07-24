@@ -132,14 +132,32 @@
 <div class="light-section">
   <div class="row">
     <div class="small-12 columns">
-      <h2>UPDATES <a class="small grey" ng-if="!home.msg.enabled()" ng-click="home.msg.enable()">Enable desktop notifications</a></h2>
+      <h2>UPDATES</h2>
     </div>
   </div>
-  <div class="row" ng-repeat="message in home.msg.messages | orderBy:'created':true">
-    <div class="small-12 columns">
-      <span ng-bind-html="message.text|markdown|unsafe"></span>
-      <span>{{message.created | relativeDate}}</span>
-      <br><br><br>
+  <div class="row">
+    <!-- Live feed -->
+    <div class="small-12 medium-6 columns">
+      <h3>
+        LIVE FEED
+        <span ng-if="!home.msg.enabled()" class="small">
+          <a class="small grey" ng-click="home.msg.enable()">Enable desktop notifications</a> |
+        </span>
+        <a class="small grey" ng-if="home.msg.showing == 'few'" ng-click="home.msg.showAll()">Show all</a>
+        <a class="small grey" ng-if="home.msg.showing == 'all'" ng-click="home.msg.showFew()">Show less</a>
+      </h3>
+
+      <ul class="messages">
+        <li class="message" ng-repeat="message in home.msg.messages | orderBy:'created':true">
+          <i class="fa fa-envelope grey"></i> <span class="italic grey small">{{message.created | relativeDate}}</span>
+          <span ng-bind-html="message.text|markdown|unsafe"></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Twitter feed -->
+    <div class="small-12 medium-6 columns">
+      <h3>TWITTER</h3>
     </div>
   </div>
 </div>

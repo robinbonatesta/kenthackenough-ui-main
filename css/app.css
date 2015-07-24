@@ -41,6 +41,10 @@ button.postfix:focus {
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .large {
   font-size: 1.2rem;
 }
@@ -353,6 +357,19 @@ button.apply {
 #sponsors img:hover {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
+}
+
+ul.messages {
+  margin-left: 0;
+  background: white;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+}
+
+li.message {
+  padding: 1rem;
+  display: block;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 footer#site-footer {
