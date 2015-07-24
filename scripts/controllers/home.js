@@ -8,7 +8,7 @@ angular
         controller: 'HomeCtrl as home'
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', '$location', function (User, News, Ticket, Application, $location) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', function (User, News, Ticket, Application, Message, $location) {
 
     var view = this;
 
@@ -16,7 +16,8 @@ angular
       user: new User(),
       news: new News(),
       ticket: new Ticket(),
-      application: new Application()
+      application: new Application(),
+      message: new Message()
     };
 
     view.user = Models.user.getMe();
@@ -156,5 +157,78 @@ angular
       }
 
     };
+
+    view.msg = {
+
+      messages: [],
+
+      /**
+      * Get a list of all messages
+      */
+      get: function () {
+        var self = this;
+        Models.message.list().
+        success(function (data) {
+          self.messages = data.messages;
+        }).
+        error(function (data) {
+          self.errors = data.errors;
+        });
+      },
+
+      /**
+      * Listen for changes to messages
+      */
+      listen: function () {
+        var self = this;
+
+        // Message created
+        Models.message.socket().on('create', function (message) {
+          self.messages.push(message);
+
+          // Show a notification
+          var notification = new Notify('Kent Hack Enough', {
+            body: message.text
+          });
+          if (!Notify.needsPermission) {
+            notification.show();
+          }
+        });
+
+        // Message updated
+        Models.message.socket().on('update', function (message) {
+          self.messages = self.messages.map(function (m) {
+            if (m._id == message._id) {
+              m = message;
+            }
+            return m;
+          });
+        });
+
+        // Message deleted
+        Models.message.socket().on('delete', function (message) {
+          self.messages = self.messages.filter(function (m) {
+            return m._id != message._id;
+          });
+        });
+      },
+
+      /**
+      * Prompts the user to enable notifications
+      */
+      enable: function () {
+        Notify.requestPermission();
+      },
+
+      /**
+      * Returns true if notifications are enabled
+      */
+      enabled: function () {
+        return !Notify.needsPermission;
+      }
+
+    };
+    view.msg.get();
+    view.msg.listen();
 
   }]);
