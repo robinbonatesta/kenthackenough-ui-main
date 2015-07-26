@@ -191,9 +191,16 @@ angular
           self.all.push(message);
           self.refresh();
 
+          // Calculate number of seconds to show notification
+          var words = message.text.split(' ');
+          var seconds = Math.ceil(words.length / 3.3);
+          seconds = Math.max(seconds, 2);
+
           // Show a notification
           var notification = new Notify('Kent Hack Enough', {
-            body: message.text
+            body: message.text,
+            icon: '/img/logo-short-square-black.png',
+            timeout: seconds
           });
           if (!Notify.needsPermission) {
             notification.show();
