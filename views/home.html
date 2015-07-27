@@ -23,7 +23,7 @@
   </div>
 
   <div class="row" id="updates">
-    <div class="small-12 large-4 large-offset-4 columns">
+    <div class="small-12 medium-8 medium-offset-2 large-4 large-offset-4 columns">
       <!-- Pre-register -->
       <!--<p class="align-center">Get updates about KHE:</p>
       <p class="align-center" ng-repeat="message in home.mail.successes">{{message}}</p>
@@ -46,6 +46,16 @@
       <div ng-if="home.user" class="align-center">
         <a href="/account" class="white">Change Email/Password</a> |
         <a ng-click="home.person.logout()" class="white">Logout</a>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns align-center">
+        <nav>
+          <a ui-sref="live">GET UPDATES</a>
+          <a ui-sref="schedule">VIEW THE SCHEDULE</a>
+        </nav>
       </div>
     </div>
   </div>
