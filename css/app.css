@@ -103,6 +103,14 @@ a.white:hover {
   text-align: center;
 }
 
+.vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -487,4 +495,41 @@ footer#site-footer .container {
 .dark-page header h1 {
   color: white;
   font-size: 1.5rem;
+}
+
+.schedule h2 {
+  text-transform: uppercase;
+}
+
+.schedule h4 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.schedule table {
+  background: none;
+  border: none;
+}
+
+.schedule tr:nth-of-type(even) {
+  background: none;
+  border: none;
+}
+
+.schedule td.right-col {
+  border-left: 1px solid white;
+}
+
+.schedule .tl-event {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.schedule .tl-event-right {
+  border-left: 1px solid white;
+}
+
+.schedule a {
+  border-bottom: 1px dashed red;
 }

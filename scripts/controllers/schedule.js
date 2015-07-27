@@ -19,6 +19,7 @@ angular
     view.events = {
 
       all: [],
+      days: {},
 
       /**
       * Retreive a list of all events
@@ -28,6 +29,7 @@ angular
         Models.event.list().
         success(function (data) {
           self.all = data.events;
+          self.refresh();
         }).
         error(function (data) {
           view.errors = data.errors;
@@ -42,6 +44,7 @@ angular
         // Event created
         Models.event.socket().on('create', function (event) {
           self.all.push(event);
+          self.refresh();
         });
 
         // Event updated
@@ -50,6 +53,7 @@ angular
             if (e._id == event._id) e = event;
             return e;
           });
+          self.refresh();
         });
 
         // Event deleted
@@ -57,7 +61,29 @@ angular
           self.all = self.all.filter(function (e) {
             return e._id != event._id;
           });
+          self.refresh();
         });
+      },
+
+      /**
+      * Reload the lists
+      */
+      refresh: function () {
+        var self = this;
+        var days = [
+          'Sunday', 'Monday',
+          'Tuesday', 'Wednesday',
+          'Thursday', 'Friday',
+          'Saturday'
+        ];
+        for (var i = 0; i < self.all.length; i++) {
+          var day = new Date(self.all[i].start).getDay();
+          if (self.days[days[day]]) {
+            self.days[days[day]].push(self.all[i]);
+          } else {
+            self.days[days[day]] = [self.all[i]];
+          }
+        }
       }
 
     };
