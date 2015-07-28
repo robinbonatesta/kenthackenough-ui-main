@@ -45,7 +45,8 @@ var bowerJs = [
   './bower_components/snap.svg/dist/snap.svg-min.js',
   './bower_components/wow.js/dist/wow.min.js',
   './bower_components/dropzone/dist/min/dropzone.min.js',
-  './bower_components/notify.js/notify.js'
+  './bower_components/notify.js/notify.js',
+  './bower_components/instafeed.js/instafeed.min.js'
 
 ];
 
