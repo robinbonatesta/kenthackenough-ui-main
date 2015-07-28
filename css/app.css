@@ -119,6 +119,11 @@ a.white:hover {
   transform: translateY(-50%);
 }
 
+.row.full-width {
+  width: 95%;
+  max-width: 95%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
