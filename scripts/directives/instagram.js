@@ -22,6 +22,9 @@ angular
           resolution: 'thumbnail'
         });
         feed.run();
+        setInterval(function () {
+          feed.run();
+        }, 1000*60*20);
       }
 
     };
