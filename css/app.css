@@ -212,10 +212,6 @@ nav a {
   font-size: 1.2rem;
 }
 
-#updates {
-  margin-top: 2rem;
-}
-
 button.apply {
   width: 100%;
   font-family: 'Oswald';
@@ -408,6 +404,7 @@ ul.messages {
   margin-left: 0;
   background: #FDFDFD;
   border: 1px solid #E1E1E1;
+  border-radius: 5px;
 }
 
 li.message {

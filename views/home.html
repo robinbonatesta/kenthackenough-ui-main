@@ -139,52 +139,7 @@
   </div>
 </div>
 
-<div class="light-section" ng-if="home.msg.messages.length">
-  <div class="row">
-    <div class="small-12 columns">
-      <h2>UPDATES</h2>
-    </div>
-  </div>
-  <div class="row">
-    <!-- Live feed -->
-    <div class="small-12 medium-7 large-9 columns">
-      <h3>
-        LIVE FEED
-        <span ng-if="!home.msg.enabled()" class="small">
-          <a class="small grey" ng-click="home.msg.enable()">Enable desktop notifications</a> |
-        </span>
-        <a class="small grey" ng-if="home.msg.showing == 'few'" ng-click="home.msg.showAll()">Show all</a>
-        <a class="small grey" ng-if="home.msg.showing == 'all'" ng-click="home.msg.showFew()">Show less</a>
-      </h3>
-
-      <ul class="messages">
-        <li class="message" ng-repeat="message in home.msg.messages | orderBy:'created':true">
-          <i class="fa fa-envelope grey"></i> <span class="italic grey small">{{message.created | relativeDate}}</span>
-          <span ng-bind-html="message.text|markdown|unsafe"></span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Social media links -->
-    <div class="small-12 medium-5 large-3 columns" id="social-media">
-      <h3>SOCIAL MEDIA</h3>
-      <div class="row">
-        <a href="https://twitter.com/@kenthackenough"><i class="fa fa-twitter fa-3x small-3 columns"></i></a>
-        <a href="https://www.facebook.com/kenthackenough"><i class="fa fa-facebook fa-3x small-3 columns"></i></a>
-        <a href="https://instagram.com/kenthackenough/"><i class="fa fa-instagram fa-3x small-3 columns"></i></a>
-        <a href="https://medium.com/the-diary-of-hacksu"><i class="fa fa-medium fa-3x small-3 columns"></i></a>
-      </div>
-      <div class="row">
-        <div class="small-12 columns">
-          <br>
-          <p>Keep up with KHE on all of our social media channels. Tag us on Twitter <a href="https://twitter.com/@kenthackenough">@kenthackenough</a> if you have any questions!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="light-section" style="background-color:white;" id="sponsors">
+<div class="light-section" id="sponsors">
   <div class="row">
     <div class="small-12 columns">
       <div class="row">

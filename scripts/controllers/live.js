@@ -8,12 +8,13 @@ angular
         controller: 'LiveCtrl as live'
       });
   }])
-  .controller('LiveCtrl', ['Event', function (Event) {
+  .controller('LiveCtrl', ['Event', 'Message', function (Event, Message) {
 
     var view = this;
 
     var Models = {
-      event: new Event()
+      event: new Event(),
+      message: new Message()
     };
 
     view.events = {
@@ -95,8 +96,131 @@ angular
 
     };
 
+    view.msg = {
+
+      showing: 'few',
+
+      all: [],
+      messages: [],
+
+      /**
+      * Get a list of all messages
+      */
+      get: function () {
+        var self = this;
+        Models.message.list().
+        success(function (data) {
+          self.all = data.messages;
+          self.refresh();
+        }).
+        error(function (data) {
+          self.errors = data.errors;
+        });
+      },
+
+      /**
+      * Listen for changes to messages
+      */
+      listen: function () {
+        var self = this;
+
+        // Message created
+        Models.message.socket().on('create', function (message) {
+          self.all.push(message);
+          self.refresh();
+
+          // Calculate number of seconds to show notification
+          var words = message.text.split(' ');
+          var seconds = Math.ceil(words.length / 3.3);
+          seconds = Math.max(seconds, 2);
+
+          // Show a notification
+          var notification = new Notify('Kent Hack Enough', {
+            body: message.text,
+            icon: '/img/logo-short-square-black.png',
+            timeout: seconds
+          });
+          if (!Notify.needsPermission) {
+            notification.show();
+          }
+        });
+
+        // Message updated
+        Models.message.socket().on('update', function (message) {
+          self.all = self.all.map(function (m) {
+            if (m._id == message._id) {
+              m = message;
+            }
+            return m;
+          });
+          self.refresh();
+        });
+
+        // Message deleted
+        Models.message.socket().on('delete', function (message) {
+          self.all = self.all.filter(function (m) {
+            return m._id != message._id;
+          });
+          self.refresh();
+        });
+      },
+
+      /**
+      * Prompts the user to enable notifications
+      */
+      enable: function () {
+        Notify.requestPermission();
+      },
+
+      /**
+      * Returns true if notifications are enabled
+      */
+      enabled: function () {
+        return !Notify.needsPermission;
+      },
+
+      /**
+      * Show all messages
+      */
+      showAll: function () {
+        this.showing = 'all';
+        this.messages = this.all;
+      },
+
+      /**
+      * Show a few messages
+      */
+      showFew: function () {
+        this.showing = 'few';
+        this.messages = [];
+        for (var i = 0; i < this.all.length; ++i) {
+          this.messages.push(this.all[i]);
+          if (i == 2) break;
+        }
+      },
+
+      /**
+      * Refresh the list of messages
+      */
+      refresh: function () {
+        // Sort by date
+        this.all = this.all.sort(function (a, b) {
+          if (a.created < b.created) return 1;
+          return -1;
+        });
+        if (this.showing == 'all') {
+          this.showAll();
+        } else if (this.showing == 'few') {
+          this.showFew();
+        }
+      }
+
+    };
+
     // Initialize the controller
     view.events.get();
     view.events.listen();
+    view.msg.get();
+    view.msg.listen();
 
   }]);
