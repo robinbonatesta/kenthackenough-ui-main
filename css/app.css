@@ -345,15 +345,23 @@ button.apply {
   visibility: hidden;
 }
 
+#sponsors .row {
+  margin-top: 2rem;
+}
+
 #sponsors img {
   margin:auto;
   height: 75%;
+  width: 75%;
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
   margin-top: 2em;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #sponsors img:hover {
