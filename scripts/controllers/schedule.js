@@ -70,6 +70,13 @@ angular
       */
       refresh: function () {
         var self = this;
+        // sort events
+        self.all = self.all.sort(function (a, b) {
+          if (a.start > b.start) return 1;
+          if (a.start < b.start) return -1;
+          return 0;
+        });
+        // split out by day
         var days = [
           'Sunday', 'Monday',
           'Tuesday', 'Wednesday',

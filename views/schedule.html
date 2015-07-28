@@ -2,18 +2,19 @@
   <header>
     <div class="row">
       <div class="small-12 columns">
-        <h1>KHE | SCHEDULE</h1>
+        <h1><a href="/">KHE</a> SCHEDULE</h1>
       </div>
     </div>
   </header>
 
-
   <div ng-repeat="(day, events) in schedule.events.days" class="row schedule align-center">
-    <h2 class="white">{{day}}</h2>
+    <div class="small-12 columns">
+      <h2 class="white underline">{{day}}</h2>
+    </div>
     <table class="small-12 columns">
       <tr ng-repeat="event in events | orderBy:'start':false">
-        <td class="align-right" width="200">
-          <span class="white">{{event.start|timeOfDay}} - {{event.end|timeOfDay}}</span><br>
+        <td class="align-right left-col" width="200">
+          <span class="white strong">{{event.start|timeOfDay}} - {{event.end|timeOfDay}}</span><br>
           <span class="white">{{event.location}}</span>
         </td>
         <td class="align-left right-col" width="200">

@@ -12,6 +12,10 @@ h1, h2, h3 {
   color: black;
 }
 
+h1 a {
+  font-family: 'Oswald', sans-serif;
+}
+
 a, a:active, a:focus {
   color: red;
 }
@@ -63,6 +67,10 @@ button.postfix:focus {
 
 .white {
   color: white;
+}
+
+.red {
+  color: red;
 }
 
 a.black {
@@ -510,6 +518,11 @@ footer#site-footer .container {
 .schedule table {
   background: none;
   border: none;
+  border-spacing: 0;
+}
+
+.schedule td {
+  padding: 1.5rem 1rem 1.5rem 1rem;
 }
 
 .schedule tr:nth-of-type(even) {
@@ -518,18 +531,13 @@ footer#site-footer .container {
 }
 
 .schedule td.right-col {
-  border-left: 1px solid white;
-}
-
-.schedule .tl-event {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.schedule .tl-event-right {
-  border-left: 1px solid white;
+  border-left: 2px solid red;
 }
 
 .schedule a {
   border-bottom: 1px dashed red;
+}
+
+.schedule h2 {
+  margin-bottom: 1.5rem;
 }
