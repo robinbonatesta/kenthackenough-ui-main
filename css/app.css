@@ -347,7 +347,6 @@ button.apply {
 
 #sponsors img {
   margin:auto;
-  height: 75%;
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
