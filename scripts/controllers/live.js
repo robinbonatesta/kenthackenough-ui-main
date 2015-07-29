@@ -20,7 +20,9 @@ angular
     view.events = {
 
       all: [],
-      days: {},
+      happening: [],
+      upNext: [],
+      later: [],
 
       /**
       * Retreive a list of all events
@@ -31,6 +33,9 @@ angular
         success(function (data) {
           self.all = data.events;
           self.refresh();
+          setInterval(function () {
+
+          }, 1000*60 * 30);
         }).
         error(function (data) {
           view.errors = data.errors;
@@ -77,21 +82,23 @@ angular
           if (a.start < b.start) return -1;
           return 0;
         });
-        // split out by day
-        var days = [
-          'Sunday', 'Monday',
-          'Tuesday', 'Wednesday',
-          'Thursday', 'Friday',
-          'Saturday'
-        ];
+
+        // split them up
+        var rest = [];
         for (var i = 0; i < self.all.length; i++) {
-          var day = new Date(self.all[i].start).getDay();
-          if (self.days[days[day]]) {
-            self.days[days[day]].push(self.all[i]);
+          var e = self.all[i];
+          var now = new Date();
+          var start = new Date(e.start);
+          var end = new Date(e.end);
+          if (start <= now && now <= end) {
+            self.happening.push(e);
           } else {
-            self.days[days[day]] = [self.all[i]];
+            rest.push(e);
           }
         }
+
+        self.upNext = rest.slice(0, 3);
+        self.later = rest.slice(3, 6);
       }
 
     };

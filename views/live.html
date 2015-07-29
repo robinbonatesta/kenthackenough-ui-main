@@ -1,4 +1,4 @@
-<div class="dark-page">
+<div class="light-page">
   <header>
     <div class="row">
       <div class="small-12 columns">
@@ -10,30 +10,55 @@
   <div class="row full-width">
     <div class="small-12 medium-4 large-3 columns">
       <!-- Schedule -->
-      <h3 class="white">SCHEDULE</h3>
-      <div ng-repeat="(day, events) in live.events.days" class="row schedule align-center">
+      <h3>
+        SCHEDULE
+        <a ui-sref="schedule" class="small">More Details</a>
+      </h3>
+      <div id="mini-schedule" class="row">
         <div class="small-12 columns">
-          <h2 class="white underline">{{day}}</h2>
+          <div class="row section" ng-if="live.events.happening.length">
+            <div class="small-12 columns">
+              <h5>HAPPENING NOW</h5>
+              <div ng-repeat="event in live.events.happening">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | timeOfDay}} - {{event.end | timeOfDay}}<br></span>
+                <span class="grey small">{{event.location}} <br><br></span>
+              </div>
+            </div>
+          </div>
+          <div class="row section" ng-if="live.events.upNext.length">
+            <div class="small-12 columns">
+              <h5>NEXT UP</h5>
+              <div ng-repeat="event in live.events.upNext">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | timeOfDay}} - {{event.end | timeOfDay}}<br></span>
+                <span class="grey small">{{event.location}} <br><br></span>
+              </div>
+            </div>
+          </div>
+          <div class="row section" ng-if="live.events.later.length">
+            <div class="small-12 columns">
+              <h5>LATER</h5>
+              <div ng-repeat="event in live.events.later">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | timeOfDay}} - {{event.end | timeOfDay}}<br></span>
+                <span class="grey small">{{event.location}} <br><br></span>
+              </div>
+            </div>
+          </div>
+          <div class="row section">
+            <div class="small-12 columns">
+              <a ui-sref="schedule">View Full Schedule</a>
+            </div>
+          </div>
         </div>
-        <table class="small-12 columns">
-          <tr ng-repeat="event in events | orderBy:'start':false">
-            <td class="align-right left-col" width="200">
-              <span class="white strong">{{event.start|timeOfDay}} - {{event.end|timeOfDay}}</span><br>
-              <span class="white">{{event.location}}</span>
-            </td>
-            <td class="align-left right-col" width="200">
-              <h4 class="white">{{event.title}}</h4>
-              <span class="white">{{event.description}}</span>
-            </td>
-          </tr>
-        </table>
       </div>
     </div>
     <div class="small-12 medium-8 large-9 columns">
       <div ng-if="live.msg.messages.length" class="row">
         <div class="small-12 columns">
           <!-- Updates -->
-          <h3 class="white">
+          <h3>
             UPDATES
             <span ng-if="!live.msg.enabled()" class="small">
               <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
@@ -43,8 +68,8 @@
           </h3>
           <ul class="messages">
             <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
-              <i class="fa fa-envelope grey"></i> <span class="italic grey small">{{message.created | relativeDate}}</span>
               <span ng-bind-html="message.text|markdown|unsafe"></span>
+              <span class="italic grey small">{{message.created | relativeDate}}</span>
             </li>
           </ul>
         </div>
@@ -52,7 +77,7 @@
       <div class="row">
         <div class="small-12 medium-6 columns">
           <!-- Twitter -->
-          <h3 class="white">TWITTER</h3>
+          <h3>TWITTER</h3>
           <a class="twitter-timeline"
             data-dnt="true"
             href="https://twitter.com/KentHackEnough"
@@ -63,31 +88,11 @@
         </div>
         <div class="small-12 medium-6 columns">
           <!-- Instagram -->
-          <h3 class="white">INSTAGRAM</h3>
+          <h3>INSTAGRAM</h3>
           <instagram></instagram>
         </div>
       </div>
     </div>
   </div>
-
-  <!--
-  <div ng-repeat="(day, events) in live.events.days" class="row schedule align-center">
-    <div class="small-12 columns">
-      <h2 class="white underline">{{day}}</h2>
-    </div>
-    <table class="small-12 columns">
-      <tr ng-repeat="event in events | orderBy:'start':false">
-        <td class="align-right left-col" width="200">
-          <span class="white strong">{{event.start|timeOfDay}} - {{event.end|timeOfDay}}</span><br>
-          <span class="white">{{event.location}}</span>
-        </td>
-        <td class="align-left right-col" width="200">
-          <h4 class="white">{{event.title}}</h4>
-          <span class="white">{{event.description}}</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-  -->
 
 </div>
