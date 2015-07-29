@@ -23,6 +23,7 @@ angular
         });
         feed.run();
         setInterval(function () {
+          $('#instagram').empty();
           feed.run();
         }, 1000*60*20);
       }
