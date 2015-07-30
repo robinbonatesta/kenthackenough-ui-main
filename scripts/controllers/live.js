@@ -8,7 +8,7 @@ angular
         controller: 'LiveCtrl as live'
       });
   }])
-  .controller('LiveCtrl', ['Event', 'Message', function (Event, Message) {
+  .controller('LiveCtrl', ['Event', 'Message', '$interval', function (Event, Message, $interval) {
 
     var view = this;
 
@@ -34,8 +34,8 @@ angular
           self.all = data.events;
           self.refresh();
           setInterval(function () {
-
-          }, 1000*60 * 30);
+            self.get();
+          }, 1000*60 * 5);
         }).
         error(function (data) {
           view.errors = data.errors;
@@ -76,6 +76,9 @@ angular
       */
       refresh: function () {
         var self = this;
+        self.happening = [];
+        self.upNext = [];
+        self.later = [];
         // sort events
         self.all = self.all.sort(function (a, b) {
           if (a.start > b.start) return 1;
