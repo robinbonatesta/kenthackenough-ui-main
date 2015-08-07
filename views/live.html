@@ -1,0 +1,104 @@
+<div class="light-page">
+  <header>
+    <div class="row">
+      <div class="small-12 columns">
+        <h1><a href="/">KHE</a> LIVE</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="row full-width">
+    <div class="small-12 medium-4 large-3 columns">
+      <!-- Schedule -->
+      <h3>
+        SCHEDULE
+        <a ui-sref="schedule" class="small">More Details</a>
+      </h3>
+      <div id="mini-schedule" class="row">
+        <div class="small-12 columns">
+          <div class="row section" ng-if="live.events.happening.length">
+            <div class="small-12 columns">
+              <h5>HAPPENING NOW</h5>
+              <div ng-repeat="event in live.events.happening">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+              </div>
+            </div>
+          </div>
+          <div class="row section" ng-if="live.events.upNext.length">
+            <div class="small-12 columns">
+              <h5>NEXT UP</h5>
+              <div ng-repeat="event in live.events.upNext">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                <span ng-if="event.location" class="grey small">{{event.location}} <br></span><br>
+              </div>
+            </div>
+          </div>
+          <div class="row section" ng-if="live.events.later.length">
+            <div class="small-12 columns">
+              <h5>LATER</h5>
+              <div ng-repeat="event in live.events.later">
+                <span class="small bold">{{event.title}}<br></span>
+                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                <span ng-if="event.location" class="grey small">{{event.location}} <br></span><br>
+              </div>
+            </div>
+          </div>
+          <div class="row section">
+            <div class="small-12 columns">
+              <a ui-sref="schedule">View Full Schedule</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-8 large-9 columns">
+      <div ng-if="live.msg.messages.length" class="row">
+        <div class="small-12 columns">
+          <!-- Updates -->
+          <h3>
+            UPDATES
+            <span ng-if="!live.msg.enabled()" class="small">
+              <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
+            </span>
+            <a class="small" ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
+            <a class="small" ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
+          </h3>
+          <ul class="messages">
+            <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
+              <span ng-bind-html="message.text|markdown|unsafe"></span>
+              <span class="italic grey small" am-time-ago="message.created"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <!-- Twitter -->
+          <h3>
+            TWITTER
+            <a class="small" href="https://twitter.com/@kenthackenough">@KentHackEnough</a>
+          </h3>
+          <a class="twitter-timeline"
+            data-dnt="true"
+            href="https://twitter.com/KentHackEnough"
+            data-widget-id="624615979952148480"
+            data-chrome="noheader nofooter noscrollbar"
+            data-tweet-limit="4">Tweets by @KentHackEnough</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="small-12 medium-6 columns">
+          <!-- Instagram -->
+          <h3>
+            INSTAGRAM
+            <a class="small" href="http://instagram.com/kenthackenough">@kenthackenough</a>
+          </h3>
+          <instagram></instagram>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

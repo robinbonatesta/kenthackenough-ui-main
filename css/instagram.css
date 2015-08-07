@@ -1,0 +1,30 @@
+#instagram, #instagram a, #instagram span, #instagram .meta, #instagram .post, #instagram .caption {
+  font: normal normal normal 0.9rem "Helvetica Neue",Roboto,"Segoe UI",Calibri,sans-serif;
+}
+
+#instagram {
+  background: white;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+}
+
+#instagram .post {
+  padding: 1.5rem;
+}
+
+#instagram .image {
+  text-align: center;
+}
+
+#instagram hr {
+  margin: 0;
+  border-color: #E8E8E8;
+}
+
+#instagram .caption {
+  margin-top: 1rem;
+}
+
+#instagram .bold {
+  font-weight: bold;
+}

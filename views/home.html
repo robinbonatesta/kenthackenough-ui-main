@@ -2,7 +2,7 @@
 
   <parallax-background></parallax-background>
 
-  <a id="mlh-trust-badge" style="position:fixed;top:0;right:50px;max-width:100px;width:10%;min-width: 60px;display:block;z-index:10000" href="https://mlh.io/?utm_campaign=Trust%20Badge" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/f2015.png" alt="MLH Official - Fall 2015" style="width:100%;" ></a>
+  <a id="mlh-trust-badge" style="position:absolute;top:2rem;right:50px;max-width:100px;width:10%;min-width: 60px;display:block;z-index:10000" href="https://mlh.io/?utm_campaign=Trust%20Badge" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/f2015.png" alt="MLH Official - Fall 2015" style="width:100%;" ></a>
 
   <div class="row" id="icons">
     <div class="small-12 columns align-center">
@@ -23,7 +23,7 @@
   </div>
 
   <div class="row" id="updates">
-    <div class="small-12 large-4 large-offset-4 columns">
+    <div class="small-12 medium-8 medium-offset-2 large-4 large-offset-4 columns">
       <!-- Pre-register -->
       <!--<p class="align-center">Get updates about KHE:</p>
       <p class="align-center" ng-repeat="message in home.mail.successes">{{message}}</p>
@@ -46,8 +46,19 @@
       <div ng-if="home.user" class="align-center">
         <a href="/account" class="white">Change Email/Password</a> |
         <a ng-click="home.person.logout()" class="white">Logout</a>
+        <br><br>
       </div>
     </div>
+
+    <!-- Schedule and live pages -->
+    <!--<div class="row">
+      <div class="small-12 columns align-center">
+        <nav>
+          <a ui-sref="live">GET UPDATES</a>
+          <a ui-sref="schedule">VIEW THE SCHEDULE</a>
+        </nav>
+      </div>
+    </div>-->
   </div>
 
   <div class="blinds" ng-if="home.loginRegister && !home.user" ng-click="home.loginRegister = false"></div>

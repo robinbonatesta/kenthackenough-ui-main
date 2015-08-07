@@ -8,7 +8,7 @@ angular
         controller: 'HomeCtrl as home'
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', '$location', function (User, News, Ticket, Application, $location) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', function (User, News, Ticket, Application, Message, $location) {
 
     var view = this;
 
@@ -16,7 +16,8 @@ angular
       user: new User(),
       news: new News(),
       ticket: new Ticket(),
-      application: new Application()
+      application: new Application(),
+      message: new Message()
     };
 
     view.user = Models.user.getMe();

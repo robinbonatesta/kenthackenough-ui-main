@@ -26,7 +26,10 @@
     "wow.js": "1.1.x",
     "angular-ui-router": "0.2.x",
     "angular-animate": "1.3.x",
-    "dropzone": "4.0.x"
+    "dropzone": "4.0.x",
+    "notify.js": "1.2.x",
+    "instafeed.js": "1.3.x",
+    "angular-moment": "0.10.x"
   },
   "resolutions": {
     "angular": "1.3.x"

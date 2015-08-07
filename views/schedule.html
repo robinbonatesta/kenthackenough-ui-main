@@ -1,0 +1,28 @@
+<div class="dark-page">
+  <header>
+    <div class="row">
+      <div class="small-12 columns">
+        <h1><a href="/">KHE</a> SCHEDULE</h1>
+      </div>
+    </div>
+  </header>
+
+  <div ng-repeat="(day, events) in schedule.events.days" class="row schedule align-center">
+    <div class="small-12 columns">
+      <h2 class="white underline">{{day}}</h2>
+    </div>
+    <table class="small-12 columns">
+      <tr ng-repeat="event in events | orderBy:'start':false">
+        <td class="align-right left-col" width="200">
+          <span class="white strong">{{event.start|timeOfDay}} - {{event.end|timeOfDay}}</span><br>
+          <span class="white">{{event.location}}</span>
+        </td>
+        <td class="align-left right-col" width="200">
+          <h4 class="white">{{event.title}}</h4>
+          <span class="white">{{event.description}}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
